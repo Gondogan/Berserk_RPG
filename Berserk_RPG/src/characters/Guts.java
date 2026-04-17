@@ -11,7 +11,7 @@ public class Guts extends Personajes {
 
     public Guts() {
     	
-    	// Stats de la carta: HP, ATK, 45, VEL, ENERGÍA, MULTIPLICADOR PASIVA,
+    	// Stats de la carta: HP, ATK, DEF, VEL, ENERGÍA
         super("Guts", 250, 35, 45, 50, 100);
     }
 	
