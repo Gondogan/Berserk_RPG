@@ -6,7 +6,6 @@ import java.util.Random;
 
 import characters.Personajes;
 import inventory.*;
-import jdk.internal.org.jline.terminal.TerminalBuilder.SystemOutput;
 
 public class Tienda {
 
