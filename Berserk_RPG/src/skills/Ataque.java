@@ -1,5 +1,6 @@
 package skills;
 
+
 public class Ataque extends Habilidades {
 	
 	// Le pasamos al padre: nombre, descripción, multiplicador, y 0 de coste de energía.
