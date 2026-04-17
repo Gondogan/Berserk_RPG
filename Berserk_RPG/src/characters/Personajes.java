@@ -25,6 +25,7 @@ public abstract class Personajes {
     private Inventario inventario;
     private EstadoPersonaje estadoActual;
     private boolean vivo;
+    private boolean pasivaUsada = false;
 
     // Constructor
     public Personajes(String name, int vidaMaxima, int danioBase, int defensa, int velocidad, int energiaMaxima) {
@@ -42,7 +43,8 @@ public abstract class Personajes {
         this.experiencia = 0;
         this.oro = 0;
         this.vivo = true;
-
+        this.pasivaUsada = false;
+        
         this.estadoActual = EstadoPersonaje.NORMAL; //prueba
 
         // inicializa habilidades e inventario
@@ -55,6 +57,7 @@ public abstract class Personajes {
     // Métodos abstractos
     protected abstract void inicializarHabilidades();
     protected abstract void aplicarBonusDeSubidaNivel();
+    public abstract void activarPasiva();
 
     // ================= VIDA =================
 
@@ -103,6 +106,29 @@ public abstract class Personajes {
         return danio;
     }
 
+ // ================= HABILIDADES =================
+
+    public void mostrarHabilidades() {
+
+        System.out.println("\n--- HABILIDADES ---");
+
+        for (int i = 0; i < habilidades.size(); i++) {
+            System.out.println((i + 1) + ". " + habilidades.get(i));
+        }
+    }
+
+    public void usarHabilidadContra(int indice, Personajes objetivo) {
+
+        if (indice < 0 || indice >= habilidades.size()) {
+            System.out.println("Selección inválida.");
+            return;
+        }
+
+        Habilidades habilidad = habilidades.get(indice);
+
+        habilidad.usar(this, objetivo);
+    }
+    
     // ================= ENERGÃ�A =================
 
     public boolean gastarEnergia(int coste) {
@@ -125,6 +151,10 @@ public abstract class Personajes {
         }
 
         energiaActual = Math.min(energiaActual + cantidad, energiaMaxima);
+    }
+    
+    public void resetearPasiva() {
+        this.pasivaUsada = false;
     }
 
     // ================= EXPERIENCIA =================
@@ -208,26 +238,9 @@ public abstract class Personajes {
     
  // ================= EQUIPAMIENTO ================= HAY QUE REPASARLOOOOO
     
-    public void usarHabilidadContra(int indiceHabilidad, Personajes objetivo) {
-        // 1. Validar que la habilidad existe en la lista
-        if (indiceHabilidad < 0 || indiceHabilidad >= habilidades.size()) return;
-
-        // 2. Obtener la habilidad de la lista
-        skills.Habilidades habilidad = habilidades.get(indiceHabilidad);
-
-        // 3. Intentar gastar energía 
-        if (this.gastarEnergia(habilidad.getCosteEnergia())) {
-            
-            // 4. Calcular daño: Daño base del personaje * Multiplicador de la habilidad
-            int danioFinal = (int) (this.getDanioBase() * habilidad.getMultiplicadorDanio());
-            
-            System.out.println("\n" + this.getName() + " lanza [" + habilidad.getNombre() + "]!");
-            
-            // 5. El objetivo recibe el daño calculado
-            objetivo.recibirDanio(danioFinal);
-        }
-    }
-
+    //HACER ESTA PARTE CUANDO ENTENEDAMOS LA LOGICA DE EUIPAMIENTO Y TIENDA
+    
+    
  // ================= GETTERS =================
 
     public String getName() {
@@ -274,11 +287,11 @@ public abstract class Personajes {
         return oro;
     }
     
-    public void setVidaMaxima(int vidaMaxima) {
+    public void getVidaMaxima(int vidaMaxima) {
         this.vidaMaxima = vidaMaxima;
     }
 
-    public void setEnergiaMaxima(int energiaMaxima) {
+    public void getEnergiaMaxima(int energiaMaxima) {
         this.energiaMaxima = energiaMaxima;
     }
 
@@ -298,7 +311,9 @@ public abstract class Personajes {
         return vivo;
     }
 
-
+    public boolean getPasivaUsada() {
+        return pasivaUsada;
+    }
     // ================= SETTERS =================
 
     public void setName(String name) {
@@ -316,6 +331,14 @@ public abstract class Personajes {
     public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
     }
+    
+    public void setVidaMaxima(int vidaMaxima) {
+        this.vidaMaxima = vidaMaxima;
+    }
+
+    public void setEnergiaMaxima(int energiaMaxima) {
+        this.energiaMaxima = energiaMaxima;
+    }
 
     public void setOro(int oro) {
         this.oro = oro;
@@ -331,6 +354,10 @@ public abstract class Personajes {
 
     public void setEstadoActual(EstadoPersonaje estadoActual) {
         this.estadoActual = estadoActual;
+    }
+    
+    public void setPasivaUsada(boolean pasivaUsada) {
+        this.pasivaUsada = pasivaUsada;
     }
 
     // ================= TO STRING =================

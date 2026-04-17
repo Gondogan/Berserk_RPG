@@ -1,10 +1,11 @@
 package skills;
+import characters.Personajes;
 
 public abstract class Habilidades {
     
     // ATRIBUTOS
 	
-    private String nombre;
+	private String nombre;
     private String descripcion;
     private double multiplicadorDanio;
     private int costeEnergia;
@@ -33,6 +34,10 @@ public abstract class Habilidades {
     	return costeEnergia; }
 
     // MÉTODOS VARIOS
+    
+    // Cada habilidad define su comportamiento
+    
+    public abstract void usar(Personajes atacante, Personajes objetivo);
     
     @Override
     public String toString() {
