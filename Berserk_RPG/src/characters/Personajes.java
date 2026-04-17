@@ -319,6 +319,10 @@ public abstract class Personajes {
     public void setName(String name) {
         this.name = name;
     }
+    
+    public void setVidaActual(int vidaActual) {
+    	this.vidaActual = vidaActual;
+    }
 
     public void setDanioBase(int danioBase) {
         this.danioBase = danioBase;
