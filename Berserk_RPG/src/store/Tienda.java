@@ -6,6 +6,7 @@ import java.util.Random;
 
 import characters.Personajes;
 import inventory.*;
+import jdk.internal.org.jline.terminal.TerminalBuilder.SystemOutput;
 
 public class Tienda {
 
@@ -115,5 +116,26 @@ public class Tienda {
         String estado = itemGratisDisponible ? "[Disponible]" : "[Reclamado]";
 
         System.out.println("Item gratis " + estado + ": " + itemRecompensa.getNombre());
+    }
+    
+ // ================= DESPEDIDA =================
+
+    public void mostrarDespedida() {
+
+        String[] mensajes = {
+            "Vuelve pronto, viajero.",
+            "Que el destino te sea favorable.",
+            "Recuerda... siempre puedes hacerte más fuerte.",
+            "Hasta la próxima, héroe."
+        };
+
+        int indice = rand.nextInt(mensajes.length);
+
+        System.out.println("\n" + mensajes[indice]);
+    }
+
+    public void salirTienda() {
+    	System.out.println("\nSaliendo de la tienda...");
+        mostrarDespedida();
     }
 }
