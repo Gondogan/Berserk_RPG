@@ -189,7 +189,7 @@ public abstract class Personajes {
         System.out.println(name + " gana " + cantidad + " puntos de oro.");
     }
     
-    public boolean perderrOro(int cantidad) {
+    public boolean perderOro(int cantidad) {
         if (cantidad <= 0) return false;
         
         // Si el personaje tiene oro suficiente...
