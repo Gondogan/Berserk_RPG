@@ -1,5 +1,20 @@
 package map;
 
+<<<<<<< HEAD
+import enemies.Enemigo;
+import enemies.EnemigoBasico;
+
+public class Senda1 {
+
+    
+    private final Enemigo[] enemigos = {
+        new EnemigoBasico("Soldado Kushan", 80, 15, 5, 10,"Navajazo"),
+        new EnemigoBasico("Explorador Pishacha", 110, 22, 8, 12, "Golpe rápido")
+    };
+
+    public Enemigo[] getEnemigos() {
+        return enemigos;
+=======
 import java.util.Scanner;
 
 import characters.Personajes;
@@ -171,5 +186,6 @@ public class Senda1 {
             default:
                 return new Enemigo[] {};
         }
+>>>>>>> pedro
     }
 }
