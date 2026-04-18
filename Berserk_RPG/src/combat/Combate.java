@@ -9,7 +9,7 @@ import enemies.Enemigo;
 public class Combate {
 
     private Personajes jugador;
-    private Enemigo[] enemigos;   // ahora es un array
+    private Enemigo[] enemigos;
     private int indiceEnemigoActual;
 
     private Scanner scanner;
@@ -23,7 +23,11 @@ public class Combate {
         this.rand = new Random();
     }
 
-    public void iniciarCombate() {
+    /**
+     * Método principal del combate
+     * Ahora devuelve el resultado para que lo gestione EstadoJuego
+     */
+    public ResultadoCombate iniciarCombate() {
 
         mostrarInicioCombate();
 
@@ -35,22 +39,26 @@ public class Combate {
 
             boolean continuar = combatirContraEnemigo(enemigoActual);
 
-            // SI HUYE → salimos COMPLETAMENTE
+            // 🔴 Si huye → devolvemos resultado
             if (!continuar) {
                 System.out.println("Has escapado del combate.");
-                return;
+                return ResultadoCombate.HUIDA;
             }
 
+            // 🔴 Si muere → derrota
             if (!jugador.isVivo()) {
-                break;
+                return ResultadoCombate.DERROTA;
             }
 
+            // 🔴 Pasamos al siguiente enemigo
             if (!enemigoActual.estaVivo()) {
                 indiceEnemigoActual++;
             }
         }
 
         finalizarCombate();
+
+        return ResultadoCombate.VICTORIA;
     }
 
     // ================= COMBATE INDIVIDUAL =================
@@ -66,7 +74,7 @@ public class Combate {
             if (turnoJugador) {
 
                 if (!turnoJugador(enemigo)) {
-                    return false; // huida → avisamos arriba
+                    return false; // huida
                 }
 
             } else {
@@ -76,7 +84,7 @@ public class Combate {
             turnoJugador = !turnoJugador;
         }
 
-        return true; // combate terminado normal
+        return true;
     }
 
     // ================= TURNO JUGADOR =================
@@ -84,7 +92,7 @@ public class Combate {
     private boolean turnoJugador(Enemigo enemigo) {
 
         System.out.println("\n--- TU TURNO ---");
-        System.out.println("1. Atacar");
+        System.out.println("1. Usar habilidad");
         System.out.println("2. Inventario");
         System.out.println("3. Huir");
 
@@ -101,13 +109,7 @@ public class Combate {
                 break;
 
             case 3:
-                if (intentarHuir()) {
-                    return false;
-                } else {
-                    System.out.println("No has podido huir...");
-                    turnoEnemigo(enemigo);
-                }
-                break;
+                return intentarHuir();
 
             default:
                 System.out.println("Opción inválida.");
@@ -130,7 +132,7 @@ public class Combate {
     }
 
     /**
-     * Adaptador para poder usar habilidades sobre Enemigo
+     * Adaptador para reutilizar sistema de habilidades
      */
     private Personajes convertirEnemigo(Enemigo enemigo) {
 
@@ -138,14 +140,9 @@ public class Combate {
                 enemigo.getDanioBase(), enemigo.getDefensa(),
                 enemigo.getVelocidad(), 0) {
 
-            @Override
-            protected void inicializarHabilidades() {}
-
-            @Override
-            protected void aplicarBonusDeSubidaNivel() {}
-
-            @Override
-            public void activarPasiva() {}
+            @Override protected void inicializarHabilidades() {}
+            @Override protected void aplicarBonusDeSubidaNivel() {}
+            @Override public void activarPasiva() {}
 
             @Override
             public void recibirDanio(int danio) {
@@ -185,26 +182,30 @@ public class Combate {
     // ================= UTIL =================
 
     private boolean intentarHuir() {
-        return rand.nextInt(100) < 50;
+
+        if (rand.nextInt(100) < 50) {
+            return false; // huye
+        } else {
+            System.out.println("No has podido huir...");
+            return true; // sigue combate
+        }
     }
 
     private void mostrarEstado(Enemigo enemigo) {
 
-        System.out.println("\n=====================================================================\n");
+        System.out.println("\n=================================================================\n");
         System.out.println(jugador);
-        System.out.println("\n - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
+        System.out.println("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
         System.out.println(enemigo);
-        System.out.println("\n=======================================================================\n");
+        System.out.println("\n=================================================================\n");
     }
-    
-    // ============== INICIO COMBATE ==================
-    
+
     private void mostrarInicioCombate() {
 
         if (enemigos.length > 1) {
-        	System.out.println("\n⚔️  ¡COMBATE CONTRA HORDA!  ⚔️");
+            System.out.println("\n⚔️ ¡COMBATE CONTRA HORDA! ⚔️");
         } else {
-            System.out.println("\n⚔️  ¡COMBATE INICIADO!  ⚔️");
+            System.out.println("\n⚔️ ¡COMBATE INICIADO! ⚔️");
         }
     }
 
@@ -213,7 +214,7 @@ public class Combate {
         if (!jugador.isVivo()) {
             System.out.println("\n💀 Has sido derrotado... 💀");
         } else {
-            System.out.println("\n🏆 ¡Has derrotado a toda la horda! 🏆");
+            System.out.println("\n🏆 ¡Has derrotado a todos los enemigos! 🏆");
         }
     }
 }
