@@ -83,7 +83,7 @@ public abstract class Personajes {
             this.vivo = false;                               // comprobamos si el personaje ha muerto
         }
 
-        System.out.println(name + " recibe " + danioReal + " puntos de daÃ±o");
+        System.out.println(name + " recibe " + danioReal + " puntos de daño");
 
         if (!this.vivo) {
             System.out.println(name + " ha sido derrotado...");
@@ -110,7 +110,7 @@ public abstract class Personajes {
 
     public void mostrarHabilidades() {
 
-        System.out.println("\n--- HABILIDADES ---");
+        System.out.println("\n--- HABILIDADES ---\n");
 
         for (int i = 0; i < habilidades.size(); i++) {
             System.out.println((i + 1) + ". " + habilidades.get(i));
@@ -135,11 +135,11 @@ public abstract class Personajes {
 
         // comprobamos que tenga suficiente energía para usar la habilidad
         if (energiaActual < coste) {
-            System.out.println(name + " no tiene suficiente energÃ­a.");
+            System.out.println(name + " no tiene suficiente energía.");
             return false;
         }
 
-        energiaActual -= coste;      // restamos energÃ­a
+        energiaActual -= coste;      // restamos energía
         return true;
     }
 
