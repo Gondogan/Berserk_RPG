@@ -43,6 +43,8 @@ public class Inventario {
         }
     }
 
+    // Lógica para usar un item
+    
     public void usarItem(int indice, characters.Personajes personaje) {
 
         Item item = items.get(indice);
@@ -61,5 +63,11 @@ public class Inventario {
             // mejoras se consumen directamente
             items.remove(indice);
         }
+    }
+    
+    // Comprueba si el inventario está vacío
+    
+    public boolean estaVacio() {
+        return items.isEmpty();
     }
 }
