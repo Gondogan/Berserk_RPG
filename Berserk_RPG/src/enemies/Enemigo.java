@@ -104,7 +104,7 @@ public abstract class Enemigo {
 			    // XP aleatorio (10..25)
 			    public int dropearXp() {
 			        int min = 10;
-			        int max = 25;
+			        int max = 25; 
 			        return (int)(Math.random() * (max - min + 1)) + min;
 			    }
 			 
