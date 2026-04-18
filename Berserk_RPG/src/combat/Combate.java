@@ -27,21 +27,24 @@ public class Combate {
 
         mostrarInicioCombate();
 
-        // recorremos todos los enemigos
         while (indiceEnemigoActual < enemigos.length && jugador.isVivo()) {
 
             Enemigo enemigoActual = enemigos[indiceEnemigoActual];
 
             System.out.println("\n👹 Aparece: " + enemigoActual.getNombre());
 
-            combatirContraEnemigo(enemigoActual);
+            boolean continuar = combatirContraEnemigo(enemigoActual);
 
-            // si el jugador muere, se corta todo
+            // SI HUYE → salimos COMPLETAMENTE
+            if (!continuar) {
+                System.out.println("Has escapado del combate.");
+                return;
+            }
+
             if (!jugador.isVivo()) {
                 break;
             }
 
-            // si el enemigo muere → siguiente
             if (!enemigoActual.estaVivo()) {
                 indiceEnemigoActual++;
             }
@@ -52,7 +55,7 @@ public class Combate {
 
     // ================= COMBATE INDIVIDUAL =================
 
-    private void combatirContraEnemigo(Enemigo enemigo) {
+    private boolean combatirContraEnemigo(Enemigo enemigo) {
 
         boolean turnoJugador = jugador.getVelocidad() >= enemigo.getVelocidad();
 
@@ -61,15 +64,19 @@ public class Combate {
             mostrarEstado(enemigo);
 
             if (turnoJugador) {
+
                 if (!turnoJugador(enemigo)) {
-                    return; // huida
+                    return false; // huida → avisamos arriba
                 }
+
             } else {
                 turnoEnemigo(enemigo);
             }
 
             turnoJugador = !turnoJugador;
         }
+
+        return true; // combate terminado normal
     }
 
     // ================= TURNO JUGADOR =================
@@ -95,7 +102,6 @@ public class Combate {
 
             case 3:
                 if (intentarHuir()) {
-                    System.out.println("Has huido del combate.");
                     return false;
                 } else {
                     System.out.println("No has podido huir...");
@@ -205,9 +211,9 @@ public class Combate {
     private void finalizarCombate() {
 
         if (!jugador.isVivo()) {
-            System.out.println("\n💀 Has sido derrotado...");
+            System.out.println("\n💀 Has sido derrotado... 💀");
         } else {
-            System.out.println("\n🏆 ¡Has derrotado a toda la horda!");
+            System.out.println("\n🏆 ¡Has derrotado a toda la horda! 🏆");
         }
     }
 }
