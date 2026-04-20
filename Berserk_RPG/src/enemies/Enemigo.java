@@ -21,6 +21,14 @@ public abstract class Enemigo {
 			        this.velocidad = velocidad;
 			        this.vivo = true;	
 			     }
+			 public Enemigo(String nombre, int vidaMax, int danioBase, int defensa, int velocidad) {
+				    this.nombre = nombre;
+				    this.vidaMax = vidaMax;
+				    this.vidaAct = vidaMax;      // empieza con la vida al máximo
+				    this.danioBase = danioBase;
+				    this.defensa = defensa;
+				    this.velocidad = velocidad;
+				}
 			 
 			 
 			 public String getNombre() {
@@ -104,7 +112,7 @@ public abstract class Enemigo {
 			    // XP aleatorio (10..25)
 			    public int dropearXp() {
 			        int min = 10;
-			        int max = 25;
+			        int max = 25; 
 			        return (int)(Math.random() * (max - min + 1)) + min;
 			    }
 			 

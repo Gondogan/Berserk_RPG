@@ -15,7 +15,7 @@ public class Guts extends Personajes {
         super("Guts", 250, 35, 45, 50, 100);
     }
 	
-    // Aquí es donde llenamos la caja vacía de habilidades y metemos las d Guts.
+    // Aquí es donde llenamos la caja vacía de habilidades y metemos las de Guts.
     @Override
     protected void inicializarHabilidades() {
     	this.getHabilidades().add(new Ataque("Cañón de Brazo", "Disparo a quemarropa.", 1.2));
