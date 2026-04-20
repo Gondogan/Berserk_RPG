@@ -1,8 +1,14 @@
 package map;
 
-<<<<<<< HEAD
 import enemies.Enemigo;
 import enemies.EnemigoBasico;
+import java.util.Scanner;
+import characters.Personajes;
+import combat.Combate;
+import combat.ResultadoCombate;
+import game.EstadoJuego;
+import store.GestorRecompensa;
+import store.Tienda;
 
 public class Senda1 {
 
@@ -14,17 +20,7 @@ public class Senda1 {
 
     public Enemigo[] getEnemigos() {
         return enemigos;
-=======
-import java.util.Scanner;
-
-import characters.Personajes;
-import combat.Combate;
-import combat.ResultadoCombate;
-import enemies.Enemigo;
-import game.EstadoJuego;
-import store.GestorRecompensa;
-import store.Tienda;
-
+    }
 /**
  * Senda1:
  * - 3 combates consecutivos
@@ -32,7 +28,7 @@ import store.Tienda;
  * - curación completa tras cada victoria
  * - opción de ir a tienda (reinicia progreso)
  */
-public class Senda1 {
+
 
     private Personajes jugador;
     private EstadoJuego estadoJuego;
@@ -182,10 +178,11 @@ public class Senda1 {
                 return new Enemigo[] {
                     new Enemigo("Caballero oscuro", 80, 80, 18, 8, 10, 14) {}
                 };
-
+                
             default:
                 return new Enemigo[] {};
         }
->>>>>>> pedro
     }
+
+    
 }
