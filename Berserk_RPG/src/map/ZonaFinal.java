@@ -13,4 +13,32 @@ public class ZonaFinal {
     public Enemigo[] getEnemigos() {
         return enemigos;
     }
+
+    @Override
+    public String getIntroduccion() {
+        return "El tiempo parece detenerse. Te encuentras en una llanura infinita de espadas clavadas en el suelo, " +
+               "bajo una luna de sangre que nunca se oculta. El destino te ha traído ante su guardián.";
+    }
+
+    @Override
+    public String getDialogoIntermedio() {
+        return "De la tierra removida, cientos de manos esqueléticas emergen. No tienen voluntad propia, " +
+               "solo el mandato de probar si eres digno de enfrentarte al soberano de este reino.";
+    }
+
+    @Override
+    public String getDialogoFinal() {
+        return "El caballero sobre el corcel negro desenvaina su espada envuelta en espinas. Su voz suena como " +
+               "mil tumbas abriéndose: 'Luchador contra el destino... para desafiar a la Mano de Dios, " +
+               "primero debes demostrar que puedes vencer a la Muerte misma. ¡En guardia!'";
+    }
+
+    
+    //Diálogo especial para el momento del renacimiento de Skull Knight.
+     
+    public String getDialogoFase2() {
+        return "El Caballero se levanta de nuevo, su armadura emite un brillo espectral y los muertos " +
+               "se reensamblan a su lado formando una guardia pretoriana. 'No está mal, forcejeador. " +
+               "Pero la verdadera lucha contra la causalidad nunca es solitaria. ¡Siente el peso de la eternidad!'";
+    }
 }
