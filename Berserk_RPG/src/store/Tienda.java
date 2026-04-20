@@ -117,8 +117,32 @@ public class Tienda {
         System.out.println("Item gratis " + estado + ": " + itemRecompensa.getNombre());
     }
     
- // ================= DESPEDIDA =================
+ // ================= MENSAJES =================
 
+    
+    // Muestra un mensaje aleatorio de bienvenida al entrar en la tienda
+     
+    public void mostrarMensajeBienvenida() {
+
+        String[] mensajes = {
+            "Bienvenido, viajero. Tengo lo que necesitas...",
+            "Ah, un cliente. Veamos qué puedo ofrecerte.",
+            "El oro habla... ¿qué buscas?",
+            "Tengo mercancía de la mejor calidad.",
+            "Cuanto más fuerte seas, mejor comprarás..."
+        };
+
+        int indice = rand.nextInt(mensajes.length);
+
+        System.out.println("\n╔══════════════════════════════════════╗");
+        System.out.println("║           TIENDA DEL CAMINO          ║");
+        System.out.println("╚══════════════════════════════════════╝");
+
+        System.out.println(mensajes[indice]);
+    }
+    
+    // Muestra un mensaje aleatorio de despedida al salir de la tienda
+    
     public void mostrarDespedida() {
 
         String[] mensajes = {

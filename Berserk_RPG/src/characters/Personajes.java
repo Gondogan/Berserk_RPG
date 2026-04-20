@@ -70,6 +70,10 @@ public abstract class Personajes {
         // nos aseguramos que la vida actual nunca supere la vida máxima del personaje evitando crear método extra
         vidaActual = Math.min(vidaActual + cantidad, vidaMaxima);
     }
+    
+    public void curarCompleto() {
+        this.vidaActual = this.vidaMaxima;
+    }
 
     public void recibirDanio(int danio) {
 
