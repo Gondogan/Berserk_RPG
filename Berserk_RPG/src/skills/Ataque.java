@@ -1,5 +1,6 @@
 package skills;
 
+import characters.Personajes;
 
 public class Ataque extends Habilidades {
 	
@@ -8,5 +9,16 @@ public class Ataque extends Habilidades {
     public Ataque(String nombre, String descripcion, double mult) {
         
         super(nombre, descripcion, mult, 0); 
+    }
+    
+    @Override
+    public void usar(Personajes atacante, Personajes objetivo) {
+    	
+    	int danio = (int) (atacante.getDanioBase() * getMultiplicadorDanio());
+
+    	System.out.println("\n" + atacante.getName() + " lanza " + getNombre() + "\n");
+
+        objetivo.recibirDanio(danio);
+    	
     }
 }

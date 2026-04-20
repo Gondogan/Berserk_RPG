@@ -32,31 +32,29 @@ public class Combate {
         mostrarInicioCombate();
 
         while (indiceEnemigoActual < enemigos.length && jugador.isVivo()) {
-
+        	
             Enemigo enemigoActual = enemigos[indiceEnemigoActual];
-
-            System.out.println("\n👹 Aparece: " + enemigoActual.getNombre());
 
             boolean continuar = combatirContraEnemigo(enemigoActual);
 
-            // 🔴 Si huye → devolvemos resultado
+            // Si huye → devolvemos resultado
             if (!continuar) {
-                System.out.println("Has escapado del combate.");
+                System.out.println("\nHas escapado del combate.\n");
                 return ResultadoCombate.HUIDA;
             }
 
-            // 🔴 Si muere → derrota
+            // Si muere → derrota
             if (!jugador.isVivo()) {
                 return ResultadoCombate.DERROTA;
             }
 
-            // 🔴 Pasamos al siguiente enemigo
+            // Pasamos al siguiente enemigo
             if (!enemigoActual.estaVivo()) {
+            	System.out.println("\nHas derrotado a " + enemigoActual.getNombre() + "\n");
                 indiceEnemigoActual++;
             }
         }
 
-        finalizarCombate();
 
         return ResultadoCombate.VICTORIA;
     }
@@ -112,7 +110,7 @@ public class Combate {
                 return intentarHuir();
 
             default:
-                System.out.println("Opción inválida.");
+                System.out.println("Opción inválida.\n");
                 return turnoJugador(enemigo);
         }
 
@@ -125,15 +123,16 @@ public class Combate {
 
         jugador.mostrarHabilidades();
 
-        System.out.println("Selecciona habilidad:");
+        System.out.println("\nSelecciona habilidad:");
         int opcion = scanner.nextInt() - 1;
 
         jugador.usarHabilidadContra(opcion, convertirEnemigo(enemigo));
     }
 
-    /**
+    /*
      * Adaptador para reutilizar sistema de habilidades
      */
+    
     private Personajes convertirEnemigo(Enemigo enemigo) {
 
         return new Personajes(enemigo.getNombre(), enemigo.getVidaMax(),
@@ -156,13 +155,13 @@ public class Combate {
     private void usarInventario() {
 
         if (jugador.getInventario().estaVacio()) {
-            System.out.println("No tienes objetos.");
+            System.out.println("\nNo tienes objetos.");
             return;
         }
 
         jugador.getInventario().mostrarInventario();
 
-        System.out.println("Selecciona objeto:");
+        System.out.println("\nSelecciona objeto:");
         int opcion = scanner.nextInt() - 1;
 
         jugador.getInventario().usarItem(opcion, jugador);
@@ -172,7 +171,7 @@ public class Combate {
 
     private void turnoEnemigo(Enemigo enemigo) {
 
-        System.out.println("\n--- TURNO ENEMIGO ---");
+        System.out.println("\n--- TURNO ENEMIGO ---\n");
 
         int danio = enemigo.atacar();
 
@@ -183,10 +182,10 @@ public class Combate {
 
     private boolean intentarHuir() {
 
-        if (rand.nextInt(100) < 50) {
+        if (rand.nextInt(100) < 35) {
             return false; // huye
         } else {
-            System.out.println("No has podido huir...");
+            System.out.println("\nNo has podido huir...\n");
             return true; // sigue combate
         }
     }
@@ -195,7 +194,7 @@ public class Combate {
 
         System.out.println("\n=================================================================\n");
         System.out.println(jugador);
-        System.out.println("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
+        System.out.println("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  \n");
         System.out.println(enemigo);
         System.out.println("\n=================================================================\n");
     }
@@ -209,12 +208,4 @@ public class Combate {
         }
     }
 
-    private void finalizarCombate() {
-
-        if (!jugador.isVivo()) {
-            System.out.println("\n💀 Has sido derrotado... 💀");
-        } else {
-            System.out.println("\n🏆 ¡Has derrotado a todos los enemigos! 🏆");
-        }
-    }
 }

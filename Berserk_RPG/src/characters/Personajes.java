@@ -71,9 +71,6 @@ public abstract class Personajes {
         vidaActual = Math.min(vidaActual + cantidad, vidaMaxima);
     }
     
-    public void curarCompleto() {
-        this.vidaActual = this.vidaMaxima;
-    }
 
     public void recibirDanio(int danio) {
 
@@ -87,10 +84,10 @@ public abstract class Personajes {
             this.vivo = false;                               // comprobamos si el personaje ha muerto
         }
 
-        System.out.println(name + " recibe " + danioReal + " puntos de daño");
+        System.out.println("\n" + name + " recibe " + danioReal + " puntos de daño");
 
         if (!this.vivo) {
-            System.out.println(name + " ha sido derrotado...");
+            System.out.println("\n" + name + " ha sido derrotado...");
         }
     }
 
@@ -133,7 +130,7 @@ public abstract class Personajes {
         habilidad.usar(this, objetivo);
     }
     
-    // ================= ENERGÃ�A =================
+    // ================= ENERGÍA =================
 
     public boolean gastarEnergia(int coste) {
 

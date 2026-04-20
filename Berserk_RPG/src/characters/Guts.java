@@ -20,7 +20,7 @@ public class Guts extends Personajes {
     protected void inicializarHabilidades() {
     	this.getHabilidades().add(new Ataque("Cañón de Brazo", "Disparo a quemarropa.", 1.2));
     	this.getHabilidades().add(new HabilidadEspecial("Corte Ciclón", "Gira dañando con gran fuerza.", 1.8, 25));
-    	this.getHabilidades().add(new HabilidadEspecial("Tajo Matadragones", "Un barrido horizontal muy pesado.",3.5, 45 ));
+    	this.getHabilidades().add(new HabilidadEspecial("Tajo Matadragones", "Un barrido horizontal muy pesado.",3.5, 45));
 
     }
 
