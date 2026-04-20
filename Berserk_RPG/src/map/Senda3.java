@@ -39,24 +39,16 @@ public class Senda3 {
         this.gestorRecompensa = new GestorRecompensa();
         this.scanner = new Scanner(System.in);
     }
+    
+    //DIALOGOS COMENTADOS
+    
     /*
-    @Override
-    public String getIntroduccion() {
-        return "El suelo bajo tus pies se siente blando, casi como carne. Estás cerca del epicentro " +
-               "de un antiguo ritual; el hedor a azufre y desesperación es casi insoportable.";
-    }
-
-    @Override
-    public String getDialogoIntermedio() {
-        return "Una criatura de múltiples ojos te observa desde un pilar en ruinas. " +
-               "'Tu marca... brilla con una intensidad deliciosa. El festín está por comenzar'.";
-    }
-
-    @Override
-    public String getDialogoFinal() {
-        return "Una figura imponente con rostro de piedra bloquea el camino: '¡En el nombre de la pureza absoluta, " +
-               "tus pecados serán purgados con el fuego sagrado de la agonía!'";
-    }
+    public void iniciarSenda() throws InterruptedException {
+    narrador.limpiarConsola();
+    narrador.decirDialogo("El aire pesa como el plomo. El olor a azufre y excremento humano se te mete en los pulmones, recordándote que el infierno está subiendo a la superficie.");
+    narrador.decirDialogo("El suelo se siente blando, casi como si estuvieras caminando sobre una herida abierta que se niega a cerrar.");
+    narrador.decirDialogo("Escuchas el eco de látigos y el rezo fanático de aquellos que creen que el dolor es el único camino hacia la pureza.");
+    narrador.decirDialogo("Tu Marca comienza a sangrar, palpitando al ritmo de un corazón oscuro que late en lo profundo de este matadero sagrado.");
     */
 
 	public void iniciarSenda() {

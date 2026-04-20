@@ -9,55 +9,62 @@ import map.Zona;
     
 public class Narrador {
 
-    private static Scanner sc = new Scanner(System.in);
-
-   //Presentacion de senda
+	private static Scanner sc = new Scanner(System.in);
+	private static final String RED = "\u001B[31m";  //ASCII ROJO
+    private static final String RESET = "\u001B[0m";  //RESETEO ASCII
     
-    public void presentarZona(Zona zona) {
-        System.out.println("\n====================================================");
-        System.out.println("          " + zona.getNombre().toUpperCase());
-        System.out.println("====================================================");
-        imprimirEfectoNarrativo(zona.getIntroduccion());
-        esperarEnter();
-    }
-
     
-     // Muestra un diálogo estándar durante el progreso de la senda.
+     //Muestra un diálogo estándar con efecto de máquina de escribir.
+     //Realiza una pausa automática al finalizar.
      
-    public void decirDialogo(String mensaje) {
+    public void decirDialogo(String mensaje) throws InterruptedException {
         System.out.println("\n[NARRADOR]:");
         imprimirEfectoNarrativo(mensaje);
-        esperarEnter();
+        Thread.sleep(1200); 
     }
 
-    // Dialogos especiales para enemigos improtantes
+    // Diálogos de personajes con efecto de mñaquina de escribir
     
-    public void hablarPersonaje(String nombre, String mensaje) {
+    public void hablarPersonaje(String nombre, String mensaje) throws InterruptedException {
         System.out.println("\n--- " + nombre.toUpperCase() + " ---");
-        System.out.println("\"" + mensaje + "\"");
-        esperarEnter();
+        System.out.print("  \"");
+        imprimirEfectoNarrativo(mensaje);
+        System.out.println("\"");
+        Thread.sleep(1500);
+    }
+
+    // Método para escribir normal los ASCIIS
+    
+    public void imprimirAscii(String ascii) {
+        System.out.println(ascii);
     }
 
     
-     // Imprime el texto con un pequeño retraso para simular una narración real.
+    // EFECTO MÁQUINA DE ESCRIBIR: con un retraso de 30ms.
      
-    private void imprimirEfectoNarrativo(String texto) {
-        // En lugar de un println a secas, añadimos un poco de margen
-        System.out.println("  " + texto);
+    private void imprimirEfectoNarrativo(String texto) throws InterruptedException {
+        System.out.print("  "); 
+        for (int i = 0; i < texto.length(); i++) {
+            System.out.print(texto.charAt(i));
+            System.out.flush(); 
+            Thread.sleep(30);   
+        }
+        System.out.println();
     }
 
     
-     // Detiene el juego hasta que el jugador presiona la tecla Enter.
-     
-    public void esperarEnter() {
-        System.out.println("\n(Presiona ENTER para continuar...)");
-        sc.nextLine();
-    }
-
-    
-     // Limpia visualmente la consola (simulado con saltos de línea).
+     //Limpia la consola mediante saltos de línea.
      
     public void limpiarConsola() {
-        for (int i = 0; i < 50; i++) System.out.println();
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
     }
+    
+    
+    
+    public void imprimirAsciiRojo(String ascii) {
+        System.out.println(RED + ascii + RESET);
+    }
+    
 }
