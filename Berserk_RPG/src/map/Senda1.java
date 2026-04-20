@@ -1,8 +1,14 @@
 package map;
 
-<<<<<<< HEAD
 import enemies.Enemigo;
 import enemies.EnemigoBasico;
+import java.util.Scanner;
+import characters.Personajes;
+import combat.Combate;
+import combat.ResultadoCombate;
+import game.EstadoJuego;
+import store.GestorRecompensa;
+import store.Tienda;
 
 public class Senda1 {
 
@@ -14,17 +20,7 @@ public class Senda1 {
 
     public Enemigo[] getEnemigos() {
         return enemigos;
-=======
-import java.util.Scanner;
-
-import characters.Personajes;
-import combat.Combate;
-import combat.ResultadoCombate;
-import enemies.Enemigo;
-import game.EstadoJuego;
-import store.GestorRecompensa;
-import store.Tienda;
-
+    }
 /**
  * Senda1:
  * - 3 combates consecutivos
@@ -32,7 +28,7 @@ import store.Tienda;
  * - curación completa tras cada victoria
  * - opción de ir a tienda (reinicia progreso)
  */
-public class Senda1 {
+
 
     private Personajes jugador;
     private EstadoJuego estadoJuego;
@@ -49,6 +45,30 @@ public class Senda1 {
         this.tienda = new Tienda();
         this.scanner = new Scanner(System.in);
     }
+    
+    
+    
+    
+    //DIALOGOS
+    
+    @Override
+    public String getIntroduccion() {
+        return "El cielo se tiñe de ceniza sobre las llanuras de Midland. El aire huele a hierro y humo; " +
+               "la invasión de los Kushan ha convertido este reino en un matadero de hombres.";
+    }
+
+    @Override
+    public String getDialogoIntermedio() {
+        return "De entre las tiendas de campaña en llamas surge una figura deforme. '¡Más carne para el General!', " +
+               "sisea el Pishacha mientras su mandíbula se desencaja de forma antinatural.";
+    }
+
+    @Override
+    public String getDialogoFinal() {
+        return "Te han rodeado. Figuras encapuchadas emergen de las sombras proyectadas por los incendios. " +
+               "'No pasarás de aquí, intruso. El Imperio reclama tu cabeza como trofeo'.";
+    }
+
 
     // ================= INICIO SENDA =================
 
@@ -182,10 +202,11 @@ public class Senda1 {
                 return new Enemigo[] {
                     new Enemigo("Caballero oscuro", 80, 80, 18, 8, 10, 14) {}
                 };
-
+                
             default:
                 return new Enemigo[] {};
         }
->>>>>>> pedro
     }
+
+    
 }

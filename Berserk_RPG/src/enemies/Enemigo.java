@@ -116,7 +116,10 @@ public abstract class Enemigo {
 			        return (int)(Math.random() * (max - min + 1)) + min;
 			    }
 			 
-			 
+			    //Creo un mensaje de muerte solo para los jefes finales
+			    public void mensajeMuerteJefe() {
+			    	
+			    }
 			 
 			 
 			    // ================= TO STRING =================
@@ -130,6 +133,7 @@ public abstract class Enemigo {
 			                + " | VEL: " + velocidad;
 			 
 			    }
+				
 			 
 			 
 			 
