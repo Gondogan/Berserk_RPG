@@ -9,18 +9,24 @@ import combat.ResultadoCombate;
 import game.EstadoJuego;
 import store.GestorRecompensa;
 import store.Tienda;
+import java.util.ArrayList;
 
 public class Senda1 {
 
+	private ArrayList<EnemigoBasico> enemigos;
     
-    private final Enemigo[] enemigos = {
-        new EnemigoBasico("Soldado Kushan", 80, 15, 5, 10,"Navajazo"),
-        new EnemigoBasico("Explorador Pishacha", 110, 22, 8, 12, "Golpe rápido")
+	public Senda1() {
+        enemigos = new ArrayList<>();
+  
+    		enemigos.add(new EnemigoBasico("Soldado Kushan", 80, 15, 5, 10, "Cuchillada"));
+            enemigos.add(new EnemigoBasico("Explorador Pishacha", 110, 22, 8, 10, "Golpe rápido"));
+            enemigos.add(new EnemigoBasico("Horda de Bakiraka", 220, 35, 12, 10, "Ataque múltiple"));
     };
 
-    public Enemigo[] getEnemigos() {
+    public ArrayList<EnemigoBasico> getEnemigos() {
         return enemigos;
     }
+
 /**
  * Senda1:
  * - 3 combates consecutivos

@@ -3,14 +3,21 @@ package map;
 import enemies.Enemigo;
 import enemies.EnemigoBasico;
 
+import java.util.ArrayList;
+
 public class Senda3 {
 
-    private final Enemigo[] enemigos = {
-        new EnemigoBasico("Poseso", 220, 40, 18, 10, "Zarpazo"),
-        new EnemigoBasico("Apóstol Menor", 260, 48, 22, 10, "Golpe demoníaco")
-    };
+	private ArrayList<EnemigoBasico> enemigos;
 
-    public Enemigo[] getEnemigos() {
+    public Senda3() {
+        enemigos = new ArrayList<>();
+
+        enemigos.add(new EnemigoBasico("Poseso", 220, 40, 18, 10, "Zarpazo"));
+        enemigos.add(new EnemigoBasico("Apóstol Menor", 260, 48, 22, 10, "Golpe demoníaco"));
+        enemigos.add(new EnemigoBasico("Gran Inquisidor Mozgus", 450, 60, 33, 10, "Muro de piedra"));
+    }
+
+    public ArrayList<EnemigoBasico> getEnemigos() {
         return enemigos;
     }
     
