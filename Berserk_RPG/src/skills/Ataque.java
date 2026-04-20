@@ -16,7 +16,7 @@ public class Ataque extends Habilidades {
     	
     	int danio = (int) (atacante.getDanioBase() * getMultiplicadorDanio());
 
-    	System.out.println(atacante.getName() + " lanza " + getNombre());
+    	System.out.println("\n" + atacante.getName() + " lanza " + getNombre() + "\n");
 
         objetivo.recibirDanio(danio);
     	
