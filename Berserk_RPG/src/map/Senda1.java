@@ -41,7 +41,7 @@ public class Senda1 {
     private GestorRecompensa gestorRecompensa;
     private Scanner scanner;
 
-    private static final int TOTAL_COMBATES = 3;
+    private static final int TOTAL_COMBATES = 4;
 
     public Senda1(Personajes jugador, EstadoJuego estadoJuego) {
         this.jugador = jugador;
@@ -81,19 +81,20 @@ public class Senda1 {
         System.out.println("\n🌿 Entras en la SENDA 1...");
         
         int progreso = 0;
+        int indiceEnemigo = 0;
 
         // Bucle principal de la senda
-        while (progreso < TOTAL_COMBATES && jugador.isVivo()) {
+        while (indiceEnemigo < TOTAL_COMBATES && jugador.isVivo()) {
 
-            Enemigo[] enemigos = generarEnemigo(progreso);
+            Enemigo[] enemigos = generarEnemigo(indiceEnemigo);
             String nombreActual = enemigos[0].getNombre();
                    
         // Si el enemigo actual tiene el mismo nombre que el anterior, interpretamos que seguimos dentro de la misma horda y no anunciamos un combate nuevo.
 
              
             if (nombreAnterior == null || !nombreAnterior.equals(nombreActual)) {
-            	System.out.println("\n⚔️ Combate " + (progreso + 1) + " de " + TOTAL_COMBATES + " ⚔️");
-                System.out.println("\nEnemigo: " + nombreActual);
+                progreso++;
+                System.out.println("\nCombate " + progreso + " de " + (TOTAL_COMBATES - 1));
             } else {
                 System.out.println("\nContinúa la horda de " + nombreActual);
             }
@@ -131,20 +132,12 @@ public class Senda1 {
             
             System.out.println(jugador);
             
-
-            /*
-             * Solo aumentamos el progreso si el enemigo es distinto al anterior.
-             * Si es el mismo → sigue siendo la misma horda.
-             */
-            if (nombreAnterior == null || !nombreAnterior.equals(nombreActual)) {
-                progreso++;
-            }
-            
             nombreAnterior = nombreActual;
             
+            indiceEnemigo++;
             // ================= DECISIÓN =================
 
-            if (progreso < TOTAL_COMBATES) {
+            if (progreso < (TOTAL_COMBATES - 1)) {
 
                 if (!menuPostCombate()) {
 
