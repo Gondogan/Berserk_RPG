@@ -45,6 +45,30 @@ public class Senda1 {
         this.tienda = new Tienda();
         this.scanner = new Scanner(System.in);
     }
+    
+    
+    
+    
+    //DIALOGOS
+    
+    @Override
+    public String getIntroduccion() {
+        return "El cielo se tiñe de ceniza sobre las llanuras de Midland. El aire huele a hierro y humo; " +
+               "la invasión de los Kushan ha convertido este reino en un matadero de hombres.";
+    }
+
+    @Override
+    public String getDialogoIntermedio() {
+        return "De entre las tiendas de campaña en llamas surge una figura deforme. '¡Más carne para el General!', " +
+               "sisea el Pishacha mientras su mandíbula se desencaja de forma antinatural.";
+    }
+
+    @Override
+    public String getDialogoFinal() {
+        return "Te han rodeado. Figuras encapuchadas emergen de las sombras proyectadas por los incendios. " +
+               "'No pasarás de aquí, intruso. El Imperio reclama tu cabeza como trofeo'.";
+    }
+
 
     // ================= INICIO SENDA =================
 
