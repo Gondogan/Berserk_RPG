@@ -3,18 +3,24 @@ package map;
 import enemies.Enemigo;
 import enemies.EnemigoBasico;
 import game.Narrador;
+import java.util.ArrayList;
 
 public class Senda2 {
 
-    // Array fijo con los 2 enemigos básicos de la Senda 2
-    private final Enemigo[] enemigos = {
-        new EnemigoBasico("Troll", 150, 28, 12, 10, "Mazazo"),
-        new EnemigoBasico("Sátiro Corrupto", 180, 32, 15, 10, "Cornada")
-    };
+	private ArrayList<EnemigoBasico> enemigos;
 
-    public Enemigo[] getEnemigos() {
+    public Senda2() {
+        enemigos = new ArrayList<>();
+
+        enemigos.add(new EnemigoBasico("Troll", 150, 28, 12, 10, "Mazazo"));
+        enemigos.add(new EnemigoBasico("Sátiro Corrupto", 180, 32, 15, 10, "Cornada"));
+        enemigos.add(new EnemigoBasico("Kelpie de las Sombras", 300, 45, 20, 10, "Carga oscura"));
+    }
+
+    public ArrayList<EnemigoBasico> getEnemigos() {
         return enemigos;
     }
+}
 
 
     @Override

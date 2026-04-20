@@ -2,16 +2,17 @@ package map;
 
 import enemies.Enemigo;
 import enemies.EnemigoBasico;
+import enemies.JefeFinalFase2;
 
 public class ZonaFinal {
 
-    private final Enemigo[] enemigos = {
-        new EnemigoBasico("Horda Muerta", 400, 55, 25, 10, "Asalto brutal"),
-        new EnemigoBasico("Skull Knight", 500, 55, 50, 10, "Corte espectral")
+    private final JefeFinalFase2[] jefes = {
+        new JefeFinalFase2("Horda Muerta", 400, 55, 25, 10, "Asalto brutal"),
+        new JefeFinalFase2("Skull Knight", 500, 55, 50, 10, "Corte espectral")
     };
 
     public Enemigo[] getEnemigos() {
-        return enemigos;
+        return jefes;
     }
 
     @Override
