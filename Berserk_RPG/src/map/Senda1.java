@@ -10,6 +10,7 @@ import game.EstadoJuego;
 import store.GestorRecompensa;
 import store.Tienda;
 import java.util.ArrayList;
+import game.Narrador;
 
 public class Senda1 {
 
@@ -39,6 +40,7 @@ public class Senda1 {
     private Personajes jugador;
     private EstadoJuego estadoJuego;
     private GestorRecompensa gestorRecompensa;
+    private Narrador narrador;
     private Scanner scanner;
 
     private static final int TOTAL_COMBATES = 4;
@@ -46,40 +48,25 @@ public class Senda1 {
     public Senda1(Personajes jugador, EstadoJuego estadoJuego) {
         this.jugador = jugador;
         this.estadoJuego = estadoJuego;
+        this.narrador = narrador;
         this.gestorRecompensa = new GestorRecompensa();
         this.scanner = new Scanner(System.in);
     }
     
     
-    
-    //DIALOGOS
-    /*
-    @Override
-    public String getIntroduccion() {
-        return "El cielo se tiñe de ceniza sobre las llanuras de Midland. El aire huele a hierro y humo; " +
-               "la invasión de los Kushan ha convertido este reino en un matadero de hombres.";
-    }
-
-    @Override
-    public String getDialogoIntermedio() {
-        return "De entre las tiendas de campaña en llamas surge una figura deforme. '¡Más carne para el General!', " +
-               "sisea el Pishacha mientras su mandíbula se desencaja de forma antinatural.";
-    }
-
-    @Override
-    public String getDialogoFinal() {
-        return "Te han rodeado. Figuras encapuchadas emergen de las sombras proyectadas por los incendios. " +
-               "'No pasarás de aquí, intruso. El Imperio reclama tu cabeza como trofeo'.";
-    }
-	*/
-
     // ================= INICIO SENDA =================
 
-    public void iniciarSenda() {
+    public void iniciarSenda() throws InterruptedException {
     	
-    	String nombreAnterior = null;
-        System.out.println("\n🌿 Entras en la SENDA 1...");
+    	
+    	
+    	narrador.limpiarConsola();
+        narrador.decirDialogo("El cielo de Midland ha muerto; ahora es solo una costra de hollín y oraciones no escuchadas.");
+        narrador.decirDialogo("El viento arrastra el hedor dulce de la carne quemada y el hierro oxidado de miles de armaduras rotas.");
+        narrador.decirDialogo("A lo lejos, los gritos de los agonizantes son silenciados por las risas guturales de los Pishacha que patrullan las ruinas.");
+        narrador.decirDialogo("Bajo tus pies, el barro es una mezcla espesa de lluvia y sangre vieja. Aquí, la humanidad es solo combustible para el fuego del Imperio Kushan.");
         
+        String nombreAnterior = null;
         int progreso = 0;
         int indiceEnemigo = 0;
 
