@@ -17,7 +17,7 @@ public class Juego {
     private Scanner scanner;
     private EstadoJuego estadoJuego;
     private Personajes jugador;
-    private Tienda tienda;
+    private Tienda tienda = new Tienda();
     private Personajes guts;
     private Personajes griffith;
     private Personajes casca;
@@ -25,7 +25,6 @@ public class Juego {
     public Juego() {
         scanner = new Scanner(System.in);
         estadoJuego = new EstadoJuego();
-        tienda = new Tienda();
         this.guts = new Guts();
         this.griffith = new Griffith();
         this.casca = new Casca();
@@ -53,7 +52,7 @@ public class Juego {
                     break;
 
                 case 2:
-                    abrirTienda();
+                    tienda.abrirTienda(jugador);
                     break;
 
                 case 3:
@@ -108,7 +107,7 @@ public class Juego {
 
     private void mostrarMenuPrincipal() {
 
-        System.out.println("\n===== MENÚ PRINCIPAL =====");
+        System.out.println("\n===== MENÚ PRINCIPAL =====\n");
         System.out.println("1. Elegir Senda");
         System.out.println("2. Tienda");
         System.out.println("3. Cambiar Personaje");
@@ -119,7 +118,7 @@ public class Juego {
 
     private void menuSenda() {
 
-        System.out.println("\nSelecciona una senda:");
+        System.out.println("\nSelecciona una senda:\n");
         System.out.println("1. Senda 1");
         System.out.println("2. Senda 2");
         System.out.println("3. Senda 3");
@@ -163,7 +162,7 @@ public class Juego {
     private void abrirTienda() {
 
         tienda.mostrarMensajeBienvenida();
-        tienda.mostrarCatalogo();
+        tienda.inicializarCatalogo();
 
         System.out.println("Pulsa cualquier número para salir...");
         scanner.nextInt();

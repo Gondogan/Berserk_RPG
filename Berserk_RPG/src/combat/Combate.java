@@ -39,7 +39,7 @@ public class Combate {
 
             // Si huye → devolvemos resultado
             if (!continuar) {
-                System.out.println("Has escapado del combate.");
+                System.out.println("\nHas escapado del combate.\n");
                 return ResultadoCombate.HUIDA;
             }
 
@@ -50,11 +50,11 @@ public class Combate {
 
             // Pasamos al siguiente enemigo
             if (!enemigoActual.estaVivo()) {
+            	System.out.println("\nHas derrotado a " + enemigoActual.getNombre() + "\n");
                 indiceEnemigoActual++;
             }
         }
 
-        finalizarCombate();
 
         return ResultadoCombate.VICTORIA;
     }
@@ -110,7 +110,7 @@ public class Combate {
                 return intentarHuir();
 
             default:
-                System.out.println("Opción inválida.");
+                System.out.println("Opción inválida.\n");
                 return turnoJugador(enemigo);
         }
 
@@ -123,7 +123,7 @@ public class Combate {
 
         jugador.mostrarHabilidades();
 
-        System.out.println("Selecciona habilidad:");
+        System.out.println("\nSelecciona habilidad:");
         int opcion = scanner.nextInt() - 1;
 
         jugador.usarHabilidadContra(opcion, convertirEnemigo(enemigo));
@@ -185,7 +185,7 @@ public class Combate {
         if (rand.nextInt(100) < 35) {
             return false; // huye
         } else {
-            System.out.println("\nNo has podido huir...");
+            System.out.println("\nNo has podido huir...\n");
             return true; // sigue combate
         }
     }
@@ -208,12 +208,4 @@ public class Combate {
         }
     }
 
-    private void finalizarCombate() {
-
-        if (!jugador.isVivo()) {
-            System.out.println("\n💀 Has sido derrotado... 💀");
-        } else {
-            System.out.println("\n🏆 ¡Has derrotado a todos los enemigos! 🏆");
-        }
-    }
 }
