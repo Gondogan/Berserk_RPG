@@ -3,23 +3,25 @@ package controller;
 import characters.Guts;
 import combat.Combate;
 import enemies.Enemigo;
+import game.EstadoJuego;
+import map.Senda1;
 
 public class Main {
 
-	public static void main(String[] args) {
-		
-		// da error en habilidad pasiva, esto lo he hecho para comprobar si funcionaba el código de combate (pedro)
-		
-		 // ================= JUGADOR =================
-        Guts jugador = new Guts();
 
-        // ================= ENEMIGO =================
-        Enemigo enemigo = new Enemigo("Orco", 60, 60, 12, 5, 8, 10) {};
+    public static void main(String[] args) {
 
-        // ================= COMBATE =================
-        Combate combate = new Combate(jugador, new Enemigo[]{enemigo});
-        combate.iniciarCombate();
+        // 1. Crear personaje (usa el que ya tengas, ej: Guts)
+        Guts jugador = new Guts(); // o tu clase concreta
 
-	}
+        // 2. Crear estado del juego
+        EstadoJuego estadoJuego = new EstadoJuego();
+
+        // 3. Crear senda
+        Senda1 senda1 = new Senda1(jugador, estadoJuego);
+
+        // 4. Ejecutar senda
+        senda1.iniciarSenda();
+    }
 
 }
