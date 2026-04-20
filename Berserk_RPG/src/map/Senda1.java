@@ -9,18 +9,24 @@ import combat.ResultadoCombate;
 import game.EstadoJuego;
 import store.GestorRecompensa;
 import store.Tienda;
+import java.util.ArrayList;
 
 public class Senda1 {
 
+	private ArrayList<EnemigoBasico> enemigos;
     
-    private final Enemigo[] enemigos = {
-        new EnemigoBasico("Soldado Kushan", 80, 15, 5, 10,"Navajazo"),
-        new EnemigoBasico("Explorador Pishacha", 110, 22, 8, 12, "Golpe rápido")
+	public Senda1() {
+        enemigos = new ArrayList<>();
+  
+    		enemigos.add(new EnemigoBasico("Soldado Kushan", 80, 15, 5, 10, "Cuchillada"));
+            enemigos.add(new EnemigoBasico("Explorador Pishacha", 110, 22, 8, 10, "Golpe rápido"));
+            enemigos.add(new EnemigoBasico("Horda de Bakiraka", 220, 35, 12, 10, "Ataque múltiple"));
     };
 
-    public Enemigo[] getEnemigos() {
+    public ArrayList<EnemigoBasico> getEnemigos() {
         return enemigos;
     }
+
 /**
  * Senda1:
  * - 3 combates consecutivos
@@ -33,7 +39,6 @@ public class Senda1 {
     private Personajes jugador;
     private EstadoJuego estadoJuego;
     private GestorRecompensa gestorRecompensa;
-    private Tienda tienda;
     private Scanner scanner;
 
     private static final int TOTAL_COMBATES = 3;
@@ -42,15 +47,13 @@ public class Senda1 {
         this.jugador = jugador;
         this.estadoJuego = estadoJuego;
         this.gestorRecompensa = new GestorRecompensa();
-        this.tienda = new Tienda();
         this.scanner = new Scanner(System.in);
     }
     
     
     
-    
     //DIALOGOS
-    
+    /*
     @Override
     public String getIntroduccion() {
         return "El cielo se tiñe de ceniza sobre las llanuras de Midland. El aire huele a hierro y humo; " +
@@ -68,23 +71,33 @@ public class Senda1 {
         return "Te han rodeado. Figuras encapuchadas emergen de las sombras proyectadas por los incendios. " +
                "'No pasarás de aquí, intruso. El Imperio reclama tu cabeza como trofeo'.";
     }
-
+	*/
 
     // ================= INICIO SENDA =================
 
     public void iniciarSenda() {
-
+    	
+    	String nombreAnterior = null;
         System.out.println("\n🌿 Entras en la SENDA 1...");
-
+        
         int progreso = 0;
 
-        // 🔁 Bucle principal de la senda
+        // Bucle principal de la senda
         while (progreso < TOTAL_COMBATES && jugador.isVivo()) {
 
-            System.out.println("\n⚔️ Combate " + (progreso + 1) + " de " + TOTAL_COMBATES);
-
             Enemigo[] enemigos = generarEnemigo(progreso);
+            String nombreActual = enemigos[0].getNombre();
+                   
+        // Si el enemigo actual tiene el mismo nombre que el anterior, interpretamos que seguimos dentro de la misma horda y no anunciamos un combate nuevo.
 
+             
+            if (nombreAnterior == null || !nombreAnterior.equals(nombreActual)) {
+            	System.out.println("\n⚔️ Combate " + (progreso + 1) + " de " + TOTAL_COMBATES + " ⚔️");
+                System.out.println("\nEnemigo: " + nombreActual);
+            } else {
+                System.out.println("\nContinúa la horda de " + nombreActual);
+            }
+            
             Combate combate = new Combate(jugador, enemigos);
 
             ResultadoCombate resultado = combate.iniciarCombate();
@@ -93,37 +106,49 @@ public class Senda1 {
 
             if (resultado == ResultadoCombate.DERROTA) {
 
-                System.out.println("\n💀 Has sido derrotado...");
+                System.out.println("\n💀 Has sido derrotado... 💀");
                 estadoJuego.marcarDerrota();
                 return;
             }
 
             if (resultado == ResultadoCombate.HUIDA) {
 
-                System.out.println("\n🏃 Has abandonado la senda.");
+                System.out.println("\n🏃 Has abandonado la senda. 🏃");
                 return;
             }
 
             // ================= VICTORIA =================
 
-            System.out.println("\n✔ Has ganado el combate.");
+            System.out.println("\nHas ganado el combate.");
 
-            // 🔥 Recompensa
+            // Recompensa
             gestorRecompensa.generarRecompensa(jugador, progreso + 1);
 
-            // 🔥 Curación completa tras cada combate
-            jugador.curarCompleto();
-            System.out.println("❤️ Tu vida ha sido restaurada al máximo.");
+            // Aumento de Energía
+            
+            jugador.recuperarEnergia(30);
+            System.out.println("Tu energía ha sido restaurada.\n");
+            
+            System.out.println(jugador);
+            
 
-            progreso++;
-
+            /*
+             * Solo aumentamos el progreso si el enemigo es distinto al anterior.
+             * Si es el mismo → sigue siendo la misma horda.
+             */
+            if (nombreAnterior == null || !nombreAnterior.equals(nombreActual)) {
+                progreso++;
+            }
+            
+            nombreAnterior = nombreActual;
+            
             // ================= DECISIÓN =================
 
             if (progreso < TOTAL_COMBATES) {
 
                 if (!menuPostCombate()) {
 
-                    System.out.println("\n❌ Has abandonado la senda. Progreso reiniciado.");
+                    System.out.println("\n❌ Has abandonado la senda. Progreso reiniciado. ❌");
                     return;
                 }
             }
@@ -149,7 +174,7 @@ public class Senda1 {
 
         System.out.println("\n¿Qué quieres hacer?");
         System.out.println("1. Continuar senda");
-        System.out.println("2. Ir a tienda (pierdes progreso)");
+        System.out.println("2. Huir de la senda (pierdes progreso)");
 
         int opcion = scanner.nextInt();
 
@@ -159,23 +184,12 @@ public class Senda1 {
                 return true;
 
             case 2:
-                abrirTienda();
                 return false;
 
             default:
                 System.out.println("Opción inválida.");
                 return menuPostCombate();
         }
-    }
-
-    // ================= TIENDA =================
-
-    private void abrirTienda() {
-
-        tienda.mostrarMensajeBienvenida();
-        tienda.mostrarCatalogo();
-
-        System.out.println("\nSales de la tienda...");
     }
 
     // ================= GENERACIÓN ENEMIGOS =================
@@ -199,14 +213,20 @@ public class Senda1 {
                 };
 
             case 2:
-                return new Enemigo[] {
-                    new Enemigo("Caballero oscuro", 80, 80, 18, 8, 10, 14) {}
+            	return new Enemigo[] {
+                        new Enemigo("Orco", 60, 60, 12, 5, 8, 10) {}
+                };
+            	
+            case 3: 
+            	return new Enemigo[] {
+                        new Enemigo("Caballero oscuro", 80, 80, 18, 8, 10, 14) {}
                 };
                 
             default:
                 return new Enemigo[] {};
         }
     }
+    
 
     
 }

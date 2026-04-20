@@ -71,9 +71,6 @@ public abstract class Personajes {
         vidaActual = Math.min(vidaActual + cantidad, vidaMaxima);
     }
     
-    public void curarCompleto() {
-        this.vidaActual = this.vidaMaxima;
-    }
 
     public void recibirDanio(int danio) {
 
@@ -133,7 +130,7 @@ public abstract class Personajes {
         habilidad.usar(this, objetivo);
     }
     
-    // ================= ENERGÃ�A =================
+    // ================= ENERGÍA =================
 
     public boolean gastarEnergia(int coste) {
 

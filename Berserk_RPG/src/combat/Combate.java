@@ -32,25 +32,23 @@ public class Combate {
         mostrarInicioCombate();
 
         while (indiceEnemigoActual < enemigos.length && jugador.isVivo()) {
-
+        	
             Enemigo enemigoActual = enemigos[indiceEnemigoActual];
-
-            System.out.println("\n👹 Aparece: " + enemigoActual.getNombre());
 
             boolean continuar = combatirContraEnemigo(enemigoActual);
 
-            // 🔴 Si huye → devolvemos resultado
+            // Si huye → devolvemos resultado
             if (!continuar) {
                 System.out.println("Has escapado del combate.");
                 return ResultadoCombate.HUIDA;
             }
 
-            // 🔴 Si muere → derrota
+            // Si muere → derrota
             if (!jugador.isVivo()) {
                 return ResultadoCombate.DERROTA;
             }
 
-            // 🔴 Pasamos al siguiente enemigo
+            // Pasamos al siguiente enemigo
             if (!enemigoActual.estaVivo()) {
                 indiceEnemigoActual++;
             }
@@ -131,9 +129,10 @@ public class Combate {
         jugador.usarHabilidadContra(opcion, convertirEnemigo(enemigo));
     }
 
-    /**
+    /*
      * Adaptador para reutilizar sistema de habilidades
      */
+    
     private Personajes convertirEnemigo(Enemigo enemigo) {
 
         return new Personajes(enemigo.getNombre(), enemigo.getVidaMax(),
@@ -156,13 +155,13 @@ public class Combate {
     private void usarInventario() {
 
         if (jugador.getInventario().estaVacio()) {
-            System.out.println("No tienes objetos.");
+            System.out.println("\nNo tienes objetos.");
             return;
         }
 
         jugador.getInventario().mostrarInventario();
 
-        System.out.println("Selecciona objeto:");
+        System.out.println("\nSelecciona objeto:");
         int opcion = scanner.nextInt() - 1;
 
         jugador.getInventario().usarItem(opcion, jugador);
@@ -172,7 +171,7 @@ public class Combate {
 
     private void turnoEnemigo(Enemigo enemigo) {
 
-        System.out.println("\n--- TURNO ENEMIGO ---");
+        System.out.println("\n--- TURNO ENEMIGO ---\n");
 
         int danio = enemigo.atacar();
 
@@ -183,10 +182,10 @@ public class Combate {
 
     private boolean intentarHuir() {
 
-        if (rand.nextInt(100) < 50) {
+        if (rand.nextInt(100) < 35) {
             return false; // huye
         } else {
-            System.out.println("No has podido huir...");
+            System.out.println("\nNo has podido huir...");
             return true; // sigue combate
         }
     }
@@ -195,7 +194,7 @@ public class Combate {
 
         System.out.println("\n=================================================================\n");
         System.out.println(jugador);
-        System.out.println("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
+        System.out.println("\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  \n");
         System.out.println(enemigo);
         System.out.println("\n=================================================================\n");
     }

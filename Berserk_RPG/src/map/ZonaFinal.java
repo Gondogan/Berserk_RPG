@@ -1,19 +1,46 @@
 package map;
 
+import java.util.Scanner;
+
+import characters.Personajes;
 import enemies.Enemigo;
 import enemies.EnemigoBasico;
+import enemies.JefeFinalFase2;
+import game.EstadoJuego;
+import store.GestorRecompensa;
 
 public class ZonaFinal {
 
-    private final Enemigo[] enemigos = {
-        new EnemigoBasico("Horda Muerta", 400, 55, 25, 10, "Asalto brutal"),
-        new EnemigoBasico("Skull Knight", 500, 55, 50, 10, "Corte espectral")
+    private final JefeFinalFase2[] jefes = {
+        new JefeFinalFase2("Horda Muerta", 400, 55, 25, 10, "Asalto brutal"),
+        new JefeFinalFase2("Skull Knight", 500, 55, 50, 10, "Corte espectral")
     };
 
-    public Enemigo[] getEnemigos() {
-        return enemigos;
+   
+
+	public Enemigo[] getEnemigos() {
+        return jefes;
+    }
+    private Personajes jugador;
+    private EstadoJuego estadoJuego;
+    private GestorRecompensa gestorRecompensa;
+    private Scanner scanner;
+
+    private static final int TOTAL_COMBATES = 3;
+
+    public ZonaFinal(Personajes jugador, EstadoJuego estadoJuego) {
+        this.jugador = jugador;
+        this.estadoJuego = estadoJuego;
+        this.gestorRecompensa = new GestorRecompensa();
+        this.scanner = new Scanner(System.in);
     }
 
+	public void iniciarSenda() {
+		// TODO Auto-generated method stub
+		
+	}
+
+    /*
     @Override
     public String getIntroduccion() {
         return "El tiempo parece detenerse. Te encuentras en una llanura infinita de espadas clavadas en el suelo, " +
@@ -41,4 +68,5 @@ public class ZonaFinal {
                "se reensamblan a su lado formando una guardia pretoriana. 'No está mal, forcejeador. " +
                "Pero la verdadera lucha contra la causalidad nunca es solitaria. ¡Siente el peso de la eternidad!'";
     }
+    */
 }
