@@ -2,8 +2,13 @@ package map;
 
 import enemies.Enemigo;
 import enemies.EnemigoBasico;
+import game.EstadoJuego;
+import store.GestorRecompensa;
 
 import java.util.ArrayList;
+import java.util.Scanner;
+
+import characters.Personajes;
 
 public class Senda3 {
 
@@ -21,7 +26,20 @@ public class Senda3 {
         return enemigos;
     }
     
-    
+    private Personajes jugador;
+    private EstadoJuego estadoJuego;
+    private GestorRecompensa gestorRecompensa;
+    private Scanner scanner;
+
+    private static final int TOTAL_COMBATES = 3;
+
+    public Senda3(Personajes jugador, EstadoJuego estadoJuego) {
+        this.jugador = jugador;
+        this.estadoJuego = estadoJuego;
+        this.gestorRecompensa = new GestorRecompensa();
+        this.scanner = new Scanner(System.in);
+    }
+    /*
     @Override
     public String getIntroduccion() {
         return "El suelo bajo tus pies se siente blando, casi como carne. Estás cerca del epicentro " +
@@ -39,5 +57,11 @@ public class Senda3 {
         return "Una figura imponente con rostro de piedra bloquea el camino: '¡En el nombre de la pureza absoluta, " +
                "tus pecados serán purgados con el fuego sagrado de la agonía!'";
     }
+    */
+
+	public void iniciarSenda() {
+		// TODO Auto-generated method stub
+		
+	}
 }
     

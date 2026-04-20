@@ -39,7 +39,6 @@ public class Senda1 {
     private Personajes jugador;
     private EstadoJuego estadoJuego;
     private GestorRecompensa gestorRecompensa;
-    private Tienda tienda;
     private Scanner scanner;
 
     private static final int TOTAL_COMBATES = 3;
@@ -48,7 +47,6 @@ public class Senda1 {
         this.jugador = jugador;
         this.estadoJuego = estadoJuego;
         this.gestorRecompensa = new GestorRecompensa();
-        this.tienda = new Tienda();
         this.scanner = new Scanner(System.in);
     }
     
@@ -128,7 +126,10 @@ public class Senda1 {
 
             // Aumento de Energía
             
-            System.out.println("Tu energía ha sido restaurada.");
+            jugador.recuperarEnergia(30);
+            System.out.println("Tu energía ha sido restaurada.\n");
+            
+            System.out.println(jugador);
             
 
             /*
@@ -173,7 +174,7 @@ public class Senda1 {
 
         System.out.println("\n¿Qué quieres hacer?");
         System.out.println("1. Continuar senda");
-        System.out.println("2. Ir a tienda (pierdes progreso)");
+        System.out.println("2. Huir de la senda (pierdes progreso)");
 
         int opcion = scanner.nextInt();
 
@@ -183,23 +184,12 @@ public class Senda1 {
                 return true;
 
             case 2:
-                abrirTienda();
                 return false;
 
             default:
                 System.out.println("Opción inválida.");
                 return menuPostCombate();
         }
-    }
-
-    // ================= TIENDA =================
-
-    private void abrirTienda() {
-
-        tienda.mostrarMensajeBienvenida();
-        tienda.mostrarCatalogo();
-
-        System.out.println("\nSales de la tienda...");
     }
 
     // ================= GENERACIÓN ENEMIGOS =================

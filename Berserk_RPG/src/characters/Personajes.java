@@ -130,7 +130,7 @@ public abstract class Personajes {
         habilidad.usar(this, objetivo);
     }
     
-    // ================= ENERGÃ�A =================
+    // ================= ENERGÍA =================
 
     public boolean gastarEnergia(int coste) {
 
