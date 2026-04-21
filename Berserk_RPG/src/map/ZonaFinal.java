@@ -52,6 +52,7 @@ public class ZonaFinal {
 
         // --- 1. INTRODUCCIÓN DE LA ZONA FINAL ---
         narrador.limpiarConsola();
+        narrador.presentarSenda("ZONA FINAL — DOMINIO DE SKULL KNIGHT");
         narrador.decirDialogo("El tiempo se ha detenido aquí, en el nexo entre la vida y la condenación.");
         narrador.decirDialogo("Caminas sobre un mar de espadas oxidadas que brotan de una tierra saturada de sangre antigua.");
         narrador.decirDialogo("Sobre ti, un cielo de ébano es desgarrado por un eclipse eterno que no da luz, solo sombra.");

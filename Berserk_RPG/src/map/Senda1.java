@@ -44,6 +44,7 @@ public class Senda1 {
     	
     	
     	narrador.limpiarConsola();
+    	narrador.presentarSenda("SENDA 1 — EL ASEDIO DE MIDLAND");
         narrador.decirDialogo("El cielo de Midland ha muerto; ahora es solo una costra de hollín y oraciones no escuchadas.");
         narrador.decirDialogo("El viento arrastra el hedor dulce de la carne quemada y el hierro oxidado de miles de armaduras rotas.");
         narrador.decirDialogo("A lo lejos, los gritos de los agonizantes son silenciados por las risas guturales de los Pishacha que patrullan las ruinas.");
