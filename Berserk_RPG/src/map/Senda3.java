@@ -35,7 +35,7 @@ public class Senda3 {
     narrador.decirDialogo("El suelo se siente blando, casi como si estuvieras caminando sobre una herida abierta que se niega a cerrar.");
     narrador.decirDialogo("Escuchas el eco de látigos y el rezo fanático de aquellos que creen que el dolor es el único camino hacia la pureza.");
     narrador.decirDialogo("Tu Marca comienza a sangrar, palpitando al ritmo de un corazón oscuro que late en lo profundo de este matadero sagrado.");
-    */
+    
 
     	 String nombreAnterior = null;
          int progreso = 0;
