@@ -180,13 +180,13 @@ public class Juego {
     private void menuSenda() throws InterruptedException {
 
         System.out.println("\nSelecciona una senda:\n");
-        System.out.println("1. Senda 1");
-        System.out.println("2. Senda 2");
-        System.out.println("3. Senda 3");
+        System.out.println("1. El Asedio de Midland");
+        System.out.println("2. El Bosque de los Espíritus");
+        System.out.println("3. El Altar de la Invocación");
 
         // 🔥 Solo aparece si cumple condición
         if (estadoJuego.getCombatesGanados() >= 4) {
-            System.out.println("4. Zona Final");
+            System.out.println("4. Dominio de Skull Knight");
         }
 
         int opcion = scanner.nextInt();
@@ -194,20 +194,20 @@ public class Juego {
         switch (opcion) {
 
             case 1:
-                new Senda1(jugador, estadoJuego).iniciarSenda();
+                new Senda1(jugador, estadoJuego,narrador).iniciarSenda();
                 break;
 
             case 2:
-                new Senda2(jugador, estadoJuego).iniciarSenda();
+                new Senda2(jugador, estadoJuego,narrador).iniciarSenda();
                 break;
 
             case 3:
-                new Senda3(jugador, estadoJuego).iniciarSenda();
+                new Senda3(jugador, estadoJuego,narrador).iniciarSenda();
                 break;
 
             case 4:
                 if (estadoJuego.getCombatesGanados() >= 4) {
-                    new ZonaFinal(jugador, estadoJuego).iniciarSenda();
+                    new ZonaFinal(jugador, estadoJuego,narrador).iniciarSenda();
                 } else {
                     System.out.println("Zona Final bloqueada.");
                 }

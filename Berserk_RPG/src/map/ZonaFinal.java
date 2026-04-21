@@ -23,7 +23,7 @@ public class ZonaFinal {
 
     private static final int TOTAL_COMBATES = 2;
 
-    public ZonaFinal(Personajes jugador, EstadoJuego estadoJuego) {
+    public ZonaFinal(Personajes jugador, EstadoJuego estadoJuego, Narrador narrador) {
         this.jugador = jugador;
         this.estadoJuego = estadoJuego;
         this.narrador = new Narrador();
