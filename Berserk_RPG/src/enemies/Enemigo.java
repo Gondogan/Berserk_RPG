@@ -21,6 +21,7 @@ public abstract class Enemigo {
 			        this.velocidad = velocidad;
 			        this.vivo = true;	
 			     }
+			 
 			 public Enemigo(String nombre, int vidaMax, int danioBase, int defensa, int velocidad) {
 				    this.nombre = nombre;
 				    this.vidaMax = vidaMax;
