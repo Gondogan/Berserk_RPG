@@ -30,6 +30,7 @@ public class Senda2 {
 	public void iniciarSenda() throws InterruptedException{
 
 	    narrador.limpiarConsola();
+	    narrador.presentarSenda("SENDA 2 — EL BOSQUE DE LOS ESPIRITUS");
 	    narrador.decirDialogo("La niebla aquí no es agua; es el aliento frío de los muertos que se niegan a abandonar este mundo.");
 	    narrador.decirDialogo("Te has adentrado en el Intersticio, donde las leyes de los hombres se doblan ante el capricho de los espíritus.");
 	    narrador.decirDialogo("Los árboles parecen retorcerse de dolor, extendiendo ramas como dedos esqueléticos que buscan tocar tu Marca.");
