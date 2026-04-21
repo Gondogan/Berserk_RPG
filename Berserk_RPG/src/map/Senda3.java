@@ -46,6 +46,7 @@ public class Senda3 {
     /*
     public void iniciarSenda() throws InterruptedException {
     narrador.limpiarConsola();
+    narrador.presentarSenda("SENDA 3 — EL ALTAR DE LA INVOCACIÓN");
     narrador.decirDialogo("El aire pesa como el plomo. El olor a azufre y excremento humano se te mete en los pulmones, recordándote que el infierno está subiendo a la superficie.");
     narrador.decirDialogo("El suelo se siente blando, casi como si estuvieras caminando sobre una herida abierta que se niega a cerrar.");
     narrador.decirDialogo("Escuchas el eco de látigos y el rezo fanático de aquellos que creen que el dolor es el único camino hacia la pureza.");
