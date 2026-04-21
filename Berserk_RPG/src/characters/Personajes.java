@@ -89,6 +89,8 @@ public abstract class Personajes {
         if (!this.vivo) {
             System.out.println("\n" + name + " ha sido derrotado...");
         }
+        
+        activarPasiva();
     }
 
     private int calcularDanioReal(int danio) {
@@ -237,11 +239,6 @@ public abstract class Personajes {
     }
     
     
- // ================= EQUIPAMIENTO ================= HAY QUE REPASARLOOOOO
-    
-    //HACER ESTA PARTE CUANDO ENTENEDAMOS LA LOGICA DE EUIPAMIENTO Y TIENDA
-    
-    
  // ================= GETTERS =================
 
     public String getName() {
@@ -286,10 +283,6 @@ public abstract class Personajes {
 
     public int getOro() {
         return oro;
-    }
-    
-    public void getVidaMaxima(int vidaMaxima) {
-        this.vidaMaxima = vidaMaxima;
     }
 
     public void getEnergiaMaxima(int energiaMaxima) {
