@@ -13,6 +13,7 @@ import map.Senda3;
 import map.ZonaFinal;
 import store.Tienda;
 import game.Narrador;
+import inventory.Inventario;
 
 public class Juego {
     private Scanner scanner;
@@ -113,18 +114,22 @@ public class Juego {
                     break;
 
                 case 2:
-                    tienda.abrirTienda(jugador);
+                    abrirInventario();
                     break;
 
                 case 3:
-                    seleccionarPersonaje();
+                    tienda.abrirTienda(jugador);
                     break;
 
                 case 4:
-                    salir = true;
-                    System.out.println("Saliendo del juego...");
+                    seleccionarPersonaje();
                     break;
 
+                case 5:
+                	salir = true;
+                    System.out.println("Saliendo del juego...");
+                    break;
+                    
                 default:
                     System.out.println("Opción inválida.");
             }
@@ -170,9 +175,10 @@ public class Juego {
 
         System.out.println("\n===== MENÚ PRINCIPAL =====\n");
         System.out.println("1. Elegir Senda");
-        System.out.println("2. Tienda");
-        System.out.println("3. Cambiar Personaje");
-        System.out.println("4. Salir");
+        System.out.println("2. Inventario");
+        System.out.println("3. Tienda");
+        System.out.println("4. Cambiar Personaje");
+        System.out.println("5. Salir");
     }
 
     // ================= MENÚ SENDA =================
@@ -227,5 +233,68 @@ public class Juego {
 
         System.out.println("Pulsa cualquier número para salir...");
         scanner.nextInt();
+    }
+    
+    // ============= INVENTARIO ================
+    private void abrirInventario() {
+
+        if (jugador.getInventario().estaVacio()) {
+            System.out.println("\nEl inventario está vacío.");
+            return;
+        }
+
+        boolean salir = false;
+
+        while (!salir) {
+
+            System.out.println("\n===== INVENTARIO =====");
+
+            jugador.getInventario().mostrarInventario();
+
+            System.out.println("\nOpciones:");
+            System.out.println("1. Usar objeto");
+            System.out.println("2. Salir");
+
+            int opcion = scanner.nextInt();
+
+            switch (opcion) {
+
+                case 1:
+                    usarObjetoInventario();
+                    break;
+
+                case 2:
+                    salir = true;
+                    break;
+
+                default:
+                    System.out.println("Opción inválida.");
+            }
+        }
+    }
+    
+    private void usarObjetoInventario() {
+
+        while (true) {
+
+            jugador.getInventario().mostrarInventario();
+
+            System.out.println("\nSelecciona objeto (0 para cancelar):");
+
+            int opcion = scanner.nextInt();
+
+            if (opcion == 0) {
+                return;
+            }
+
+            int indice = opcion - 1;
+
+            if (indice >= 0 && indice < jugador.getInventario().size()) {
+                jugador.getInventario().usarItem(indice, jugador);
+                return;
+            } else {
+                System.out.println("Selección inválida.");
+            }
+        }
     }
 }

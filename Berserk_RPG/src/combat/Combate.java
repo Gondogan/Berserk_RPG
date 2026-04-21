@@ -154,17 +154,35 @@ public class Combate {
 
     private void usarInventario() {
 
-        if (jugador.getInventario().estaVacio()) {
+    	if (jugador.getInventario().estaVacio()) {
             System.out.println("\nNo tienes objetos.");
             return;
         }
 
-        jugador.getInventario().mostrarInventario();
+        while (true) {
 
-        System.out.println("\nSelecciona objeto:");
-        int opcion = scanner.nextInt() - 1;
+            jugador.getInventario().mostrarInventario();
 
-        jugador.getInventario().usarItem(opcion, jugador);
+            System.out.println("\nSelecciona objeto (0 para cancelar):");
+
+            int opcion = scanner.nextInt();
+
+            // Cancelar
+            if (opcion == 0) {
+                return;
+            }
+
+            int indice = opcion - 1;
+
+            // Validación antes de usar
+            if (indice >= 0 && indice < jugador.getInventario().size()) {
+                jugador.getInventario().usarItem(indice, jugador);
+                return;
+            } else {
+                System.out.println("Selección inválida. Inténtalo de nuevo.");
+            }
+        }
+
     }
 
     // ================= TURNO ENEMIGO =================
