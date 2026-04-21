@@ -123,6 +123,8 @@ public class Juego {
 
                 case 4:
                     seleccionarPersonaje();
+                    estadoJuego.reiniciar();
+                    estadoJuego = new EstadoJuego();
                     break;
 
                 case 5:
@@ -246,8 +248,6 @@ public class Juego {
         boolean salir = false;
 
         while (!salir) {
-
-            System.out.println("\n===== INVENTARIO =====");
 
             jugador.getInventario().mostrarInventario();
 
