@@ -10,8 +10,25 @@ import map.Zona;
 public class Narrador {
 
 	private static Scanner sc = new Scanner(System.in);
-	private static final String RED = "\u001B[31m";  //ASCII ROJO
-    private static final String RESET = "\u001B[0m";  //RESETEO ASCII
+	
+	// Las 4 variables exactas para la espada
+    public static final String ANSI_RED = "\u001B[31m";        // Empuñadura
+    public static final String ANSI_REDPASTEL = "\u001B[91m";  // Filo/Estructura
+    public static final String ANSI_RESET = "\u001B[0m";       // Resetear color
+    public static final String NEGRITA = "\u001B[1m";          // Resaltar título
+    
+
+    //Método para presentar la senda con ASCII
+    
+    public void presentarSenda(String titulo) {
+        // Usamos ANSI_REDPASTEL para el metal y ANSI_RED para el centro
+        System.out.println("\n" + ANSI_REDPASTEL + "                             />\r\n"
+            + "                (           //--------------------------------------------------------_/\n"
+            + "               (*)" + ANSI_RED + "OXOXOXOXO" + ANSI_RESET + ANSI_REDPASTEL + "(*>" + ANSI_RESET + "          " + NEGRITA + titulo + ANSI_REDPASTEL + "               __/\n"
+            + "                (           \\\\----------------------------------------------------/\r\n"
+            + "                             \\>\n" 
+            + ANSI_RESET);
+    }
     
     
      //Muestra un diálogo estándar con efecto de máquina de escribir.
@@ -62,9 +79,10 @@ public class Narrador {
     }
     
     
+    // Para título Comienzo 
     
     public void imprimirAsciiRojo(String ascii) {
-        System.out.println(RED + ascii + RESET);
+        System.out.println(ANSI_RED + ascii + ANSI_RESET);
     }
     
 }
