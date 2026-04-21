@@ -40,33 +40,54 @@ public class ZonaFinal {
 		
 	}
 
-    /*
-    @Override
-    public String getIntroduccion() {
-        return "El tiempo parece detenerse. Te encuentras en una llanura infinita de espadas clavadas en el suelo, " +
-               "bajo una luna de sangre que nunca se oculta. El destino te ha traído ante su guardián.";
-    }
+    /*   DIALOGOOS COMENTADOOOSSS
+     * 
+    public void iniciarSenda() throws InterruptedException {
+        // --- 1. INTRODUCCIÓN DE LA ZONA FINAL ---
+        narrador.limpiarConsola();
+        narrador.decirDialogo("El tiempo se ha detenido aquí, en el nexo entre la vida y la condenación.");
+        narrador.decirDialogo("Caminas sobre un mar de espadas oxidadas que brotan de una tierra saturada de sangre antigua.");
+        narrador.decirDialogo("Sobre ti, un cielo de ébano es desgarrado por un eclipse eterno que no da luz, solo sombra.");
+        narrador.decirDialogo("El aire es pesado, cargado con el lamento de millones de almas sacrificadas por la ambición.");
 
-    @Override
-    public String getDialogoIntermedio() {
-        return "De la tierra removida, cientos de manos esqueléticas emergen. No tienen voluntad propia, " +
-               "solo el mandato de probar si eres digno de enfrentarte al soberano de este reino.";
-    }
+        // --- 2. DIÁLOGO ANTES DE LUCHAR CONTRA SKULL KNIGHT ---
+        narrador.hablarPersonaje("Skull Knight", "Luchador contra el destino... Forcejeador que se arrastra en la oscuridad.");
+        narrador.hablarPersonaje("Skull Knight", "Tu marca sangra con una intensidad que no veía desde hace eras. ¿Buscas desafiar la causalidad o simplemente has venido a que tu alma sea devorada por el abismo?");
+        narrador.hablarPersonaje("Skull Knight", "Empuña tu acero, mortal, pues aquí la muerte no es el final, sino una eternidad de tormento. ¡En guardia!");
 
-    @Override
-    public String getDialogoFinal() {
-        return "El caballero sobre el corcel negro desenvaina su espada envuelta en espinas. Su voz suena como " +
-               "mil tumbas abriéndose: 'Luchador contra el destino... para desafiar a la Mano de Dios, " +
-               "primero debes demostrar que puedes vencer a la Muerte misma. ¡En guardia!'";
-    }
+        // COMBATE FASE 1: Contra la Horda de Almas
+        Combate combateFase1 = new Combate(jugador, new Enemigo[]{jefes[0]});
+        ResultadoCombate resultado1 = combateFase1.iniciarCombate();
 
-    
-    //Diálogo especial para el momento del renacimiento de Skull Knight.
-     
-    public String getDialogoFase2() {
-        return "El Caballero se levanta de nuevo, su armadura emite un brillo espectral y los muertos " +
-               "se reensamblan a su lado formando una guardia pretoriana. 'No está mal, forcejeador. " +
-               "Pero la verdadera lucha contra la causalidad nunca es solitaria. ¡Siente el peso de la eternidad!'";
+        if (resultado1 != ResultadoCombate.VICTORIA) {
+            // --- 4. FRASE CUANDO ÉL ME MATE (DERROTA FASE 1) ---
+            narrador.hablarPersonaje("Skull Knight", "Incluso aquel que lucha contra el flujo del río termina ahogándose en su corriente. Tu lucha termina aquí, un simple fragmento de cristal roto en el gran esquema de la causalidad.");
+            estadoJuego.marcarDerrota();
+            return;
+        }
+
+        // --- 3. DIÁLOGO CUANDO ACTIVA LA FASE 2 ---
+        narrador.decirDialogo("El caballero sobre el corcel negro alza su espada, y el Intersticio parece agrietarse bajo su presencia.");
+        narrador.hablarPersonaje("Skull Knight", "¡No está mal! Has resistido el embate de la horda, pero el verdadero peso del destino no se mide en carne, sino en voluntad.");
+        narrador.hablarPersonaje("Skull Knight", "¡Observa cómo la realidad se doblega ante mi acero! ¡Siente el peso de la eternidad!");
+
+        // COMBATE FASE 2: Contra Skull Knight real
+        Combate combateFase2 = new Combate(jugador, new Enemigo[]{jefes[1]});
+        ResultadoCombate resultado2 = combateFase2.iniciarCombate();
+
+        if (resultado2 == ResultadoCombate.VICTORIA) {
+            // --- 5. FRASE CUANDO YO LE DERROTE ---
+            narrador.hablarPersonaje("Skull Knight", "Has forzado una grieta en lo absoluto. El destino ha sido herido, pero no te engañes... esto es solo el comienzo.");
+            narrador.hablarPersonaje("Skull Knight", "Sigue adelante, forcejeador. El verdadero Eclipse apenas empieza a proyectar su sombra sobre este mundo.");
+            
+            narrador.decirDialogo("Skull Knight se desvanece en la niebla espectral, dejando tras de sí el eco de una batalla que resonará por siempre.");
+            estadoJuego.registrarVictoria();
+        } else {
+            // --- 4. FRASE CUANDO ÉL ME MATE (DERROTA FASE 2) ---
+            narrador.hablarPersonaje("Skull Knight", "Tu voluntad se ha quebrado antes que el destino. Descansa ahora en el olvido, pues tu nombre no será más que un susurro en la tormenta.");
+            estadoJuego.marcarDerrota();
+        }
     }
+}
     */
 }

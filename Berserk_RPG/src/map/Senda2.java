@@ -46,25 +46,15 @@ public class Senda2 {
 		
 	}
 
-
+	//DIALOGOS COMENTADOS
+	
 /*
-    @Override
-    public String getIntroduccion() {
-        return "La niebla es tan espesa que parece sólida. Te has adentrado en un lugar donde " +
-               "el mundo de los hombres y el reino de los espíritus se superponen violentamente.";
-    }
-
-    @Override
-    public String getDialogoIntermedio() {
-        return "Una risa estridente sacude las ramas. Una figura astada bloquea el sendero: " +
-               "'Pobre alma perdida... tus miedos huelen tan dulces en este bosque'.";
-    }
-
-    @Override
-    public String getDialogoFinal() {
-        return "El cauce del río se alza, desafiando la gravedad, formando la silueta de una bestia líquida. " +
-               "Un espíritu ancestral ha decidido que tu viaje termina en el fondo de estas aguas.";
-    }
+    public void iniciarSenda() throws InterruptedException {
+    narrador.limpiarConsola();
+    narrador.decirDialogo("La niebla aquí no es agua; es el aliento frío de los muertos que se niegan a abandonar este mundo.");
+    narrador.decirDialogo("Te has adentrado en el Intersticio, donde las leyes de los hombres se doblan ante el capricho de los espíritus.");
+    narrador.decirDialogo("Los árboles parecen retorcerse de dolor, extendiendo ramas como dedos esqueléticos que buscan tocar tu Marca.");
+    narrador.decirDialogo("Sientes miles de ojos observándote desde la penumbra. En este bosque, el tiempo no avanza, solo espera a que tu voluntad se quiebre.");
     */
 }
 
