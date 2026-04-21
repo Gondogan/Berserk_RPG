@@ -124,7 +124,6 @@ public class Juego {
                 case 4:
                     seleccionarPersonaje();
                     estadoJuego.reiniciar();
-                    estadoJuego = new EstadoJuego();
                     break;
 
                 case 5:
