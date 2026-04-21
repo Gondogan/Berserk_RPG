@@ -1,15 +1,12 @@
 package map;
 
 import enemies.Enemigo;
-import enemies.EnemigoBasico;
 import java.util.Scanner;
 import characters.Personajes;
 import combat.Combate;
 import combat.ResultadoCombate;
 import game.EstadoJuego;
 import store.GestorRecompensa;
-import store.Tienda;
-import java.util.ArrayList;
 import game.Narrador;
 
 /**
@@ -29,7 +26,7 @@ public class Senda1 {
     private Narrador narrador;
     private Scanner scanner;
 
-    private static final int TOTAL_COMBATES = 6;
+    private static final int TOTAL_COMBATES = 3;
 
     public Senda1(Personajes jugador, EstadoJuego estadoJuego, Narrador narrador) {
         this.jugador = jugador;
@@ -68,7 +65,7 @@ public class Senda1 {
              
             if (nombreAnterior == null || !nombreAnterior.equals(nombreActual)) {
                 progreso++;
-                System.out.println("\nCombate " + progreso + " de " + (TOTAL_COMBATES - 1));
+                System.out.println("\nCombate " + progreso + " de " + TOTAL_COMBATES);
             } else {
                 System.out.println("\nContinúa la horda de " + nombreActual);
             }
@@ -96,6 +93,8 @@ public class Senda1 {
 
             System.out.println("\nHas ganado el combate.");
 
+            estadoJuego.registrarVictoria();
+            
             // Recompensa
             gestorRecompensa.generarRecompensa(jugador, progreso + 1);
 
@@ -125,9 +124,8 @@ public class Senda1 {
 
         if (jugador.isVivo()) {
 
-            System.out.println("\n🏆 ¡Has completado la SENDA 1!");
+            System.out.println("\n🏆 ¡Has completado la senda El Asedio de Midland!");
 
-            estadoJuego.registrarVictoria();
         }
     }
 
@@ -181,24 +179,13 @@ public class Senda1 {
 
             case 2:
             	return new Enemigo[] {
+                        new Enemigo("Soldado Bikaraka", 220, 38, 30, 20) {},
+                        new Enemigo("Soldado Bikaraka", 220, 38, 30, 20) {},
+                        new Enemigo("Soldado Bikaraka", 220, 38, 30, 20) {},
+                        new Enemigo("Soldado Bikaraka", 220, 38, 30, 20) {},
                         new Enemigo("Soldado Bikaraka", 220, 38, 30, 20) {}
                 };
-            	
-            case 3: 
-            	return new Enemigo[] {
-                        new Enemigo("Soldado Bikaraka", 220, 38, 30, 20) {}
-                };
-            	
-            case 4:
-            	return new Enemigo[] {
-                        new Enemigo("Soldado Bikaraka", 220, 38, 30, 20) {}
-                };
-            	
-            case 5:
-            	return new Enemigo[] {
-                        new Enemigo("Soldado Bikaraka", 220, 38, 30, 20) {}
-                };
-            	
+ 
             default:
                 return new Enemigo[] {};
         }

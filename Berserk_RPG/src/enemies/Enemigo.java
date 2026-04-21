@@ -20,7 +20,7 @@ public abstract class Enemigo {
 			        this.defensa = defensa;
 			        this.velocidad = velocidad;
 			        this.vivo = true;	
-			     }
+			 }
 			 
 			 public Enemigo(String nombre, int vidaMax, int danioBase, int defensa, int velocidad) {
 				    this.nombre = nombre;
@@ -29,7 +29,7 @@ public abstract class Enemigo {
 				    this.danioBase = danioBase;
 				    this.defensa = defensa;
 				    this.velocidad = velocidad;
-				}
+			 }
 			 
 			 
 			 public String getNombre() {
@@ -48,14 +48,16 @@ public abstract class Enemigo {
 			    	return vivo; }
 			    
 			    public void setVidaAct(int VidaAct) {
-			    	this.vidaAct= vidaAct;
+			    	this.vidaAct = vidaAct;
 			    }
 			    public void setDanioBase(int DanioBase) {
-			    	this.danioBase= danioBase;
-			    } public void setDefensa(int defensa) {
-			    	this.defensa= defensa;
-			    } public void setVelocida(int velocidad) {
-			    	this.velocidad= velocidad;
+			    	this.danioBase = danioBase;
+			    } 
+			    public void setDefensa(int defensa) {
+			    	this.defensa = defensa;
+			    }
+			    public void setVelocida(int velocidad) {
+			    	this.velocidad = velocidad;
 			    }
 			 
 			 // Saber si está vivo

@@ -1,14 +1,10 @@
 package map;
 
 import enemies.Enemigo;
-import enemies.EnemigoBasico;
 import game.EstadoJuego;
 import game.Narrador;
 import store.GestorRecompensa;
-
-import java.util.ArrayList;
 import java.util.Scanner;
-
 import characters.Personajes;
 import combat.Combate;
 import combat.ResultadoCombate;
@@ -26,6 +22,7 @@ public class Senda2 {
     public Senda2(Personajes jugador, EstadoJuego estadoJuego, Narrador narrador) {
         this.jugador = jugador;
         this.estadoJuego = estadoJuego;
+        this.narrador = narrador;
         this.gestorRecompensa = new GestorRecompensa();
         this.scanner = new Scanner(System.in);
     }
@@ -54,7 +51,7 @@ public class Senda2 {
              
             if (nombreAnterior == null || !nombreAnterior.equals(nombreActual)) {
                 progreso++;
-                System.out.println("\nCombate " + progreso + " de " + (TOTAL_COMBATES - 1));
+                System.out.println("\nCombate " + progreso + " de " + TOTAL_COMBATES);
             } else {
                 System.out.println("\nContinúa la horda de " + nombreActual);
             }
@@ -85,6 +82,8 @@ public class Senda2 {
             // Recompensa
             gestorRecompensa.generarRecompensa(jugador, progreso + 1);
 
+            estadoJuego.registrarVictoria();
+            
             // Aumento de Energía
             
             jugador.recuperarEnergia(30);
@@ -111,9 +110,8 @@ public class Senda2 {
 
         if (jugador.isVivo()) {
 
-            System.out.println("\n🏆 ¡Has completado la SENDA 1!");
-
-            estadoJuego.registrarVictoria();
+            System.out.println("\n🏆 ¡Has completado la senda El Bosque de los Espíritus!");
+            
         }
     }
 
