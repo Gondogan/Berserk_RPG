@@ -12,22 +12,6 @@ import store.Tienda;
 import java.util.ArrayList;
 import game.Narrador;
 
-public class Senda1 {
-
-	private ArrayList<EnemigoBasico> enemigos;
-    
-	public Senda1() {
-        enemigos = new ArrayList<>();
-  
-    		enemigos.add(new EnemigoBasico("Soldado Kushan", 80, 15, 5, 10, "Cuchillada"));
-            enemigos.add(new EnemigoBasico("Explorador Pishacha", 110, 22, 8, 10, "Golpe rápido"));
-            enemigos.add(new EnemigoBasico("Horda de Bakiraka", 220, 35, 12, 10, "Ataque múltiple"));
-    };
-
-    public ArrayList<EnemigoBasico> getEnemigos() {
-        return enemigos;
-    }
-
 /**
  * Senda1:
  * - 3 combates consecutivos
@@ -36,6 +20,8 @@ public class Senda1 {
  * - opción de ir a tienda (reinicia progreso)
  */
 
+public class Senda1 {
+
 
     private Personajes jugador;
     private EstadoJuego estadoJuego;
@@ -43,9 +29,9 @@ public class Senda1 {
     private Narrador narrador;
     private Scanner scanner;
 
-    private static final int TOTAL_COMBATES = 4;
+    private static final int TOTAL_COMBATES = 6;
 
-    public Senda1(Personajes jugador, EstadoJuego estadoJuego) {
+    public Senda1(Personajes jugador, EstadoJuego estadoJuego, Narrador narrador) {
         this.jugador = jugador;
         this.estadoJuego = estadoJuego;
         this.narrador = narrador;
@@ -183,30 +169,39 @@ public class Senda1 {
         switch (nivel) {
 
             case 0:
-                return new Enemigo[] {
-                    new Enemigo("Goblin", 40, 40, 10, 3, 12, 8) {}
+                return new Enemigo[] {// String nombre, int vidaMax, int danioBase, int defensa, int velocidad
+                    new Enemigo("Soldado Kushan", 80, 25, 10, 24) {}
                 };
 
             case 1:
                 return new Enemigo[] {
-                    new Enemigo("Orco", 60, 60, 12, 5, 8, 10) {}
+                    new Enemigo("Explorador Pishacha", 110, 29, 12, 60) {}
                 };
 
             case 2:
             	return new Enemigo[] {
-                        new Enemigo("Orco", 60, 60, 12, 5, 8, 10) {}
+                        new Enemigo("Soldado Bikaraka", 220, 38, 30, 20) {}
                 };
             	
             case 3: 
             	return new Enemigo[] {
-                        new Enemigo("Caballero oscuro", 80, 80, 18, 8, 10, 14) {}
+                        new Enemigo("Soldado Bikaraka", 220, 38, 30, 20) {}
                 };
-                
+            	
+            case 4:
+            	return new Enemigo[] {
+                        new Enemigo("Soldado Bikaraka", 220, 38, 30, 20) {}
+                };
+            	
+            case 5:
+            	return new Enemigo[] {
+                        new Enemigo("Soldado Bikaraka", 220, 38, 30, 20) {}
+                };
+            	
             default:
                 return new Enemigo[] {};
         }
     }
     
-
     
 }

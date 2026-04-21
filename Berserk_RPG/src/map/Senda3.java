@@ -3,6 +3,7 @@ package map;
 import enemies.Enemigo;
 import enemies.EnemigoBasico;
 import game.EstadoJuego;
+import game.Narrador;
 import store.GestorRecompensa;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class Senda3 {
 
     private static final int TOTAL_COMBATES = 3;
 
-    public Senda3(Personajes jugador, EstadoJuego estadoJuego) {
+    public Senda3(Personajes jugador, EstadoJuego estadoJuego, Narrador narrador) {
         this.jugador = jugador;
         this.estadoJuego = estadoJuego;
         this.gestorRecompensa = new GestorRecompensa();
