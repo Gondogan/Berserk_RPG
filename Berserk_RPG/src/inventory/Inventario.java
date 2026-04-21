@@ -2,15 +2,22 @@ package inventory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
+import characters.Personajes;
 
 public class Inventario {
 
     private List<Item> items;
-
+    private Personajes jugador;
+    private Scanner scanner;
+    
     public Inventario() {
         this.items = new ArrayList<>();
+        this.scanner = new Scanner(System.in);
     }
 
+    
     public void agregarItem(Item nuevoItem) {
 
         // Si es apilable, buscar si ya existe
@@ -63,6 +70,17 @@ public class Inventario {
             // mejoras se consumen directamente
             items.remove(indice);
         }
+    }
+    // Devuelve el tamaño del inventario
+   
+    public int size() {
+        return items.size();
+    }
+    
+    // Comprueba si el índice introducido corresponde a un item real dentro del inventario.
+     
+    private boolean indiceValido(int indice) {
+        return indice >= 0 && indice < items.size();
     }
     
     // Comprueba si el inventario está vacío

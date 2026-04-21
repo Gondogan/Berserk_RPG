@@ -26,7 +26,7 @@ public class ZonaFinal {
     public ZonaFinal(Personajes jugador, EstadoJuego estadoJuego, Narrador narrador) {
         this.jugador = jugador;
         this.estadoJuego = estadoJuego;
-        this.narrador = new Narrador();
+        this.narrador = narrador;
         this.gestorRecompensa = new GestorRecompensa();
         this.scanner = new Scanner(System.in);
 
@@ -104,6 +104,7 @@ public class ZonaFinal {
             System.out.println("\nHas ganado el combate.");
 
             gestorRecompensa.generarRecompensa(jugador, indiceJefe + 1);
+            estadoJuego.marcarVictoriaFinal();
 
             jugador.recuperarEnergia(30);
             System.out.println("Tu energía ha sido restaurada.\n");
@@ -125,7 +126,7 @@ public class ZonaFinal {
 
                 if (!menuPostCombate()) {
 
-                    System.out.println("\n Has abandonado la Zona Final. ");
+                    System.out.println("\n Has abandonado el Dominio de Skull Knight. ");
                     return;
                 }
             }
@@ -141,7 +142,6 @@ public class ZonaFinal {
             narrador.decirDialogo("Skull Knight se desvanece en la niebla espectral, dejando tras de sí el eco de una batalla que resonará por siempre.");
 
             System.out.println("\n🏆 ¡Has completado la ZONA FINAL!");
-            estadoJuego.registrarVictoria();
         }
     }
 
