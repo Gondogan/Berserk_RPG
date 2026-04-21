@@ -194,20 +194,20 @@ public class Juego {
         switch (opcion) {
 
             case 1:
-                new Senda1(jugador, estadoJuego).iniciarSenda();
+                new Senda1(jugador, estadoJuego,narrador).iniciarSenda();
                 break;
 
             case 2:
-                new Senda2(jugador, estadoJuego).iniciarSenda();
+                new Senda2(jugador, estadoJuego,narrador).iniciarSenda();
                 break;
 
             case 3:
-                new Senda3(jugador, estadoJuego).iniciarSenda();
+                new Senda3(jugador, estadoJuego,narrador).iniciarSenda();
                 break;
 
             case 4:
                 if (estadoJuego.getCombatesGanados() >= 4) {
-                    new ZonaFinal(jugador, estadoJuego).iniciarSenda();
+                    new ZonaFinal(jugador, estadoJuego,narrador).iniciarSenda();
                 } else {
                     System.out.println("Zona Final bloqueada.");
                 }

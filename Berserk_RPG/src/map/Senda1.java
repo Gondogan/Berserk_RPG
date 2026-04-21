@@ -45,7 +45,7 @@ public class Senda1 {
 
     private static final int TOTAL_COMBATES = 4;
 
-    public Senda1(Personajes jugador, EstadoJuego estadoJuego) {
+    public Senda1(Personajes jugador, EstadoJuego estadoJuego, Narrador narrador) {
         this.jugador = jugador;
         this.estadoJuego = estadoJuego;
         this.narrador = narrador;
