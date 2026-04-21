@@ -69,4 +69,12 @@ public class EstadoJuego {
     public boolean isSendaFinalDesbloqueada() {
         return sendaFinalDesbloqueada;
     }
+
+    // reinicia las stats del gameplay
+	public void reiniciar() {
+		this.faseActual = FaseJuego.INICIO;
+		this.combatesGanados = 0;
+		this.sendaFinalDesbloqueada = false;
+		
+	}
 }

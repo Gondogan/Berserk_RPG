@@ -160,7 +160,7 @@ public class Senda2 {
 
             case 1: 
                 return new Enemigo[] {
-                    new Enemigo("Sétiro Corrupto", 110, 29, 15, 69) {}
+                    new Enemigo("Sátiro Corrupto", 110, 29, 15, 69) {}
                 };
 
             case 2:

@@ -32,7 +32,7 @@ public class ZonaFinal {
 
         jefes = new ArrayList<>();
 
-        jefes.add(new JefeFinalFase2("Horda Muerta", 400, 55, 25, 10, "Asalto brutal"));
+        jefes.add(new JefeFinalFase2("Horda Muerta", 400, 35, 25, 10, "Asalto brutal"));
         jefes.add(new JefeFinalFase2("Skull Knight", 500, 55, 50, 10, "Corte espectral"));
     }
 
