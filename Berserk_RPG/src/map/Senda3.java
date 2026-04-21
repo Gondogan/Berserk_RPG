@@ -161,12 +161,12 @@ public class Senda3 {
 
              case 1:
                  return new Enemigo[] {
-                     new Enemigo("Explorador Pishacha", 287, 51, 33, 60) {}
+                     new Enemigo("Apóstol Menor", 287, 51, 33, 60) {}
                  };
 
              case 2:
              	return new Enemigo[] {
-                         new Enemigo("Soldado Bikaraka", 450, 62, 36, 39) {}
+                         new Enemigo("Gran Inquisidor Mozgus", 450, 62, 36, 39) {}
                  };
              
              default:
